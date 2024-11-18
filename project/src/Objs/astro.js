@@ -1,11 +1,11 @@
-import VisualObject from './abstract'
-import { m4, primitives } from '../../lib/twgl-full'
+import AbstractVisualObject from './palnetObject'
+import { m4, primitives } from '../../lib/twgl-full.module'
 
 
 /**
  * Sphere Class
  */
-class Astro extends VisualObject {
+class Astro extends AbstractVisualObject {
     static vs = `
     uniform mat4 u_worldViewProjection;
     uniform mat4 u_transform;

@@ -1,0 +1,83 @@
+html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <script src="/project/lib/twgl-full.js"></script>
+</head>
+
+<body>
+    <doctype html="">
+        <!--Nuno Garcia, Faculdade de Ciências, Universidade de Lisboa, 2021-->
+        <title>Projeto</title>
+
+        <canvas id="canvas" width: 100vw; height: 100vh; display: block;></canvas>
+        <script id="vs" type="notjs">
+            uniform mat4 u_worldViewProjection;
+            
+            attribute vec4 position;
+            varying vec4 vcolor;
+            
+            void main() {
+              gl_Position = u_worldViewProjection * position;
+              vcolor = position;
+            }
+            
+      </script>
+        <script id="fs" type="notjs">
+            precision mediump float;
+            varying vec4 vcolor;
+
+            
+            void main() {
+             //gl_FragColor = vec4(1, 1, 0, 1);
+            gl_FragColor = vcolor;
+            }
+      
+      </script>
+        <script>
+            const m4 = twgl.m4;
+            const gl = document.querySelector("canvas").getContext("webgl");
+            const programInfo = twgl.createProgramInfo(gl, ["vs", "fs"]);
+
+            //const bufferInfo = twgl.primitives.createCylinderBufferInfo(gl, 2, 4, 10, 10);
+            const bufferInfo = twgl.primitives.createCubeBufferInfo(gl, 2);
+            const uniforms = {};
+
+            function render(time) {
+                twgl.resizeCanvasToDisplaySize(gl.canvas);
+                gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+                gl.enable(gl.DEPTH_TEST);
+                gl.enable(gl.CULL_FACE);
+                gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+                const fov = 30 * Math.PI / 180;
+                const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+                const zNear = 0.5;
+                const zFar = 10;
+                const projection = m4.perspective(fov, aspect, zNear, zFar);
+
+                const eye = [0, 0, -10];
+                const target = [0, 0, 0];
+                const up = [0, 1, 0];
+                const camera = m4.lookAt(eye, target, up);
+                const view = m4.inverse(camera);
+
+                const viewProjection = m4.multiply(projection, view);
+                const world = m4.identity();
+
+                //uniforms.u_world = world;
+                uniforms.u_worldViewProjection = m4.multiply(viewProjection, world);
+
+                gl.useProgram(programInfo.program);
+                twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
+                twgl.setUniforms(programInfo, uniforms);
+                twgl.drawBufferInfo(gl, bufferInfo);
+
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+        </script>
+</body>
+
+</html>
