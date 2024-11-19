@@ -1,11 +1,8 @@
-import AbstractVisualObject from './palnetObject'
-import { m4, primitives } from '../../lib/twgl-full.module'
+import PlanetObject from './palnetObject.js'
+import { m4, primitives } from '../../lib/twgl-full.module.js'
 
 
-/**
- * Sphere Class
- */
-class Astro extends AbstractVisualObject {
+class Astro extends PlanetObject {
     static vs = `
     uniform mat4 u_worldViewProjection;
     uniform mat4 u_transform;
@@ -31,24 +28,16 @@ class Astro extends AbstractVisualObject {
     constructor(gl, radius, divs, parent) {
         super(gl, parent)
         this.bufferInfo = primitives.createSphereBufferInfo(gl, radius, divs, divs)
-
         this.transformations = []
-
     }
 
     update(time) {
         super.update()
-
         let totalTrans = m4.identity();
-
         for (var i = this.transformations.length - 1; i >= 0; i--) {
             totalTrans = m4.multiply(this.transformations[i](time), totalTrans)
         }
-
-
         this.uniforms.u_transform = totalTrans
-
-
     }
 
     render(gl, time) {
@@ -56,26 +45,19 @@ class Astro extends AbstractVisualObject {
     }
 
     addTranslation(x, y, z) {
-        this.transformations.push((time) => {
-            return [
-                1, 0, 0, x,
-                0, 1, 0, y,
-                0, 0, 1, z,
-                0, 0, 0, 1
-            ]
-        });
+        this.transformations.push((time) => m4.translation([x, y, z]));
     }
 
     addRotationX(alpha, staticRotation = false) {
-        this.transformations.push((time) => { return m4.rotationX(degreesToRad(alpha) * (staticRotation ? 1 : time)) });
+        this.transformations.push((time) => m4.rotationX(degreesToRad(alpha) * (staticRotation ? 1 : time)));
     }
 
     addRotationY(alpha, staticRotation = false) {
-        this.transformations.push((time) => { return m4.rotationY(degreesToRad(alpha) * (staticRotation ? 1 : time)) });
+        this.transformations.push((time) => m4.rotationY(degreesToRad(alpha) * (staticRotation ? 1 : time)));
     }
 
     addRotationZ(alpha, staticRotation = false) {
-        this.transformations.push((time) => { return m4.rotationZ(degreesToRad(alpha) * (staticRotation ? 1 : time)) });
+        this.transformations.push((time) => m4.rotationZ(degreesToRad(alpha) * (staticRotation ? 1 : time)));
     }
 
     addEllipseZ(a, b, alpha) {
@@ -88,11 +70,10 @@ class Astro extends AbstractVisualObject {
             ]
         });
     }
-
 }
 
 const degreesToRad = deg => {
     return deg * Math.PI / 180;
 }
 
-export default Sphere
+export default Astro

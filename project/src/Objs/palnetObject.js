@@ -1,4 +1,4 @@
-import { createProgramInfo, drawBufferInfo, m4, setBuffersAndAttributes, setUniforms } from '../../lib/twgl-full';
+import { createProgramInfo, drawBufferInfo, m4, setBuffersAndAttributes, setUniforms } from '../../lib/twgl-full.js';
 
 /**
  * Base class for creating planet-type objects
@@ -35,7 +35,7 @@ class PlanetObject {
         gl.useProgram(programInfo.program);
         setBuffersAndAttributes(gl, programInfo, bufferInfo);
         setUniforms(programInfo, uniforms);
-        drawBufferInfo(gl, bufferInfo);
+        drawBuffer(gl, bufferInfo);
     }
 }
 

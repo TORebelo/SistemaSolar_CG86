@@ -1,4 +1,4 @@
-/* @license twgl.js 4.21.2 Copyright (c) 2015, Gregg Tavares All Rights Reserved.
+/* @license twgl.js 4.24.0 Copyright (c) 2015, Gregg Tavares All Rights Reserved.
 Available via the MIT license.
 see: http://github.com/greggman/twgl.js for details */
 /*
@@ -528,16 +528,16 @@ function setDefaultType$1(ctor) {
 function negate$1(m, dst) {
   dst = dst || new MatType(16);
 
-  dst[ 0] = -m[ 0];
-  dst[ 1] = -m[ 1];
-  dst[ 2] = -m[ 2];
-  dst[ 3] = -m[ 3];
-  dst[ 4] = -m[ 4];
-  dst[ 5] = -m[ 5];
-  dst[ 6] = -m[ 6];
-  dst[ 7] = -m[ 7];
-  dst[ 8] = -m[ 8];
-  dst[ 9] = -m[ 9];
+  dst[0] = -m[0];
+  dst[1] = -m[1];
+  dst[2] = -m[2];
+  dst[3] = -m[3];
+  dst[4] = -m[4];
+  dst[5] = -m[5];
+  dst[6] = -m[6];
+  dst[7] = -m[7];
+  dst[8] = -m[8];
+  dst[9] = -m[9];
   dst[10] = -m[10];
   dst[11] = -m[11];
   dst[12] = -m[12];
@@ -546,6 +546,15 @@ function negate$1(m, dst) {
   dst[15] = -m[15];
 
   return dst;
+}
+
+/**
+ * Creates a matrix.
+ * @return {module:twgl/m4.Mat4} A new matrix.
+ * @memberOf module:twgl/m4
+ */
+function create$1() {
+  return new MatType(16).fill(0);
 }
 
 /**
@@ -558,16 +567,16 @@ function negate$1(m, dst) {
 function copy$1(m, dst) {
   dst = dst || new MatType(16);
 
-  dst[ 0] = m[ 0];
-  dst[ 1] = m[ 1];
-  dst[ 2] = m[ 2];
-  dst[ 3] = m[ 3];
-  dst[ 4] = m[ 4];
-  dst[ 5] = m[ 5];
-  dst[ 6] = m[ 6];
-  dst[ 7] = m[ 7];
-  dst[ 8] = m[ 8];
-  dst[ 9] = m[ 9];
+  dst[0] = m[0];
+  dst[1] = m[1];
+  dst[2] = m[2];
+  dst[3] = m[3];
+  dst[4] = m[4];
+  dst[5] = m[5];
+  dst[6] = m[6];
+  dst[7] = m[7];
+  dst[8] = m[8];
+  dst[9] = m[9];
   dst[10] = m[10];
   dst[11] = m[11];
   dst[12] = m[12];
@@ -588,16 +597,16 @@ function copy$1(m, dst) {
 function identity(dst) {
   dst = dst || new MatType(16);
 
-  dst[ 0] = 1;
-  dst[ 1] = 0;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = 1;
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = 0;
-  dst[ 9] = 0;
+  dst[0] = 1;
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = 1;
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = 1;
   dst[11] = 0;
   dst[12] = 0;
@@ -615,7 +624,7 @@ function identity(dst) {
  * @return {module:twgl/m4.Mat4} The transpose of m.
  * @memberOf module:twgl/m4
  */
- function transpose(m, dst) {
+function transpose(m, dst) {
   dst = dst || new MatType(16);
   if (dst === m) {
     let t;
@@ -663,16 +672,16 @@ function identity(dst) {
   const m32 = m[3 * 4 + 2];
   const m33 = m[3 * 4 + 3];
 
-  dst[ 0] = m00;
-  dst[ 1] = m10;
-  dst[ 2] = m20;
-  dst[ 3] = m30;
-  dst[ 4] = m01;
-  dst[ 5] = m11;
-  dst[ 6] = m21;
-  dst[ 7] = m31;
-  dst[ 8] = m02;
-  dst[ 9] = m12;
+  dst[0] = m00;
+  dst[1] = m10;
+  dst[2] = m20;
+  dst[3] = m30;
+  dst[4] = m01;
+  dst[5] = m11;
+  dst[6] = m21;
+  dst[7] = m31;
+  dst[8] = m02;
+  dst[9] = m12;
   dst[10] = m22;
   dst[11] = m32;
   dst[12] = m03;
@@ -709,16 +718,16 @@ function inverse(m, dst) {
   const m31 = m[3 * 4 + 1];
   const m32 = m[3 * 4 + 2];
   const m33 = m[3 * 4 + 3];
-  const tmp_0  = m22 * m33;
-  const tmp_1  = m32 * m23;
-  const tmp_2  = m12 * m33;
-  const tmp_3  = m32 * m13;
-  const tmp_4  = m12 * m23;
-  const tmp_5  = m22 * m13;
-  const tmp_6  = m02 * m33;
-  const tmp_7  = m32 * m03;
-  const tmp_8  = m02 * m23;
-  const tmp_9  = m22 * m03;
+  const tmp_0 = m22 * m33;
+  const tmp_1 = m32 * m23;
+  const tmp_2 = m12 * m33;
+  const tmp_3 = m32 * m13;
+  const tmp_4 = m12 * m23;
+  const tmp_5 = m22 * m13;
+  const tmp_6 = m02 * m33;
+  const tmp_7 = m32 * m03;
+  const tmp_8 = m02 * m23;
+  const tmp_9 = m22 * m03;
   const tmp_10 = m02 * m13;
   const tmp_11 = m12 * m03;
   const tmp_12 = m20 * m31;
@@ -735,44 +744,44 @@ function inverse(m, dst) {
   const tmp_23 = m10 * m01;
 
   const t0 = (tmp_0 * m11 + tmp_3 * m21 + tmp_4 * m31) -
-      (tmp_1 * m11 + tmp_2 * m21 + tmp_5 * m31);
+    (tmp_1 * m11 + tmp_2 * m21 + tmp_5 * m31);
   const t1 = (tmp_1 * m01 + tmp_6 * m21 + tmp_9 * m31) -
-      (tmp_0 * m01 + tmp_7 * m21 + tmp_8 * m31);
+    (tmp_0 * m01 + tmp_7 * m21 + tmp_8 * m31);
   const t2 = (tmp_2 * m01 + tmp_7 * m11 + tmp_10 * m31) -
-      (tmp_3 * m01 + tmp_6 * m11 + tmp_11 * m31);
+    (tmp_3 * m01 + tmp_6 * m11 + tmp_11 * m31);
   const t3 = (tmp_5 * m01 + tmp_8 * m11 + tmp_11 * m21) -
-      (tmp_4 * m01 + tmp_9 * m11 + tmp_10 * m21);
+    (tmp_4 * m01 + tmp_9 * m11 + tmp_10 * m21);
 
   const d = 1.0 / (m00 * t0 + m10 * t1 + m20 * t2 + m30 * t3);
 
-  dst[ 0] = d * t0;
-  dst[ 1] = d * t1;
-  dst[ 2] = d * t2;
-  dst[ 3] = d * t3;
-  dst[ 4] = d * ((tmp_1 * m10 + tmp_2 * m20 + tmp_5 * m30) -
-          (tmp_0 * m10 + tmp_3 * m20 + tmp_4 * m30));
-  dst[ 5] = d * ((tmp_0 * m00 + tmp_7 * m20 + tmp_8 * m30) -
-          (tmp_1 * m00 + tmp_6 * m20 + tmp_9 * m30));
-  dst[ 6] = d * ((tmp_3 * m00 + tmp_6 * m10 + tmp_11 * m30) -
-          (tmp_2 * m00 + tmp_7 * m10 + tmp_10 * m30));
-  dst[ 7] = d * ((tmp_4 * m00 + tmp_9 * m10 + tmp_10 * m20) -
-          (tmp_5 * m00 + tmp_8 * m10 + tmp_11 * m20));
-  dst[ 8] = d * ((tmp_12 * m13 + tmp_15 * m23 + tmp_16 * m33) -
-          (tmp_13 * m13 + tmp_14 * m23 + tmp_17 * m33));
-  dst[ 9] = d * ((tmp_13 * m03 + tmp_18 * m23 + tmp_21 * m33) -
-          (tmp_12 * m03 + tmp_19 * m23 + tmp_20 * m33));
+  dst[0] = d * t0;
+  dst[1] = d * t1;
+  dst[2] = d * t2;
+  dst[3] = d * t3;
+  dst[4] = d * ((tmp_1 * m10 + tmp_2 * m20 + tmp_5 * m30) -
+    (tmp_0 * m10 + tmp_3 * m20 + tmp_4 * m30));
+  dst[5] = d * ((tmp_0 * m00 + tmp_7 * m20 + tmp_8 * m30) -
+    (tmp_1 * m00 + tmp_6 * m20 + tmp_9 * m30));
+  dst[6] = d * ((tmp_3 * m00 + tmp_6 * m10 + tmp_11 * m30) -
+    (tmp_2 * m00 + tmp_7 * m10 + tmp_10 * m30));
+  dst[7] = d * ((tmp_4 * m00 + tmp_9 * m10 + tmp_10 * m20) -
+    (tmp_5 * m00 + tmp_8 * m10 + tmp_11 * m20));
+  dst[8] = d * ((tmp_12 * m13 + tmp_15 * m23 + tmp_16 * m33) -
+    (tmp_13 * m13 + tmp_14 * m23 + tmp_17 * m33));
+  dst[9] = d * ((tmp_13 * m03 + tmp_18 * m23 + tmp_21 * m33) -
+    (tmp_12 * m03 + tmp_19 * m23 + tmp_20 * m33));
   dst[10] = d * ((tmp_14 * m03 + tmp_19 * m13 + tmp_22 * m33) -
-          (tmp_15 * m03 + tmp_18 * m13 + tmp_23 * m33));
+    (tmp_15 * m03 + tmp_18 * m13 + tmp_23 * m33));
   dst[11] = d * ((tmp_17 * m03 + tmp_20 * m13 + tmp_23 * m23) -
-          (tmp_16 * m03 + tmp_21 * m13 + tmp_22 * m23));
+    (tmp_16 * m03 + tmp_21 * m13 + tmp_22 * m23));
   dst[12] = d * ((tmp_14 * m22 + tmp_17 * m32 + tmp_13 * m12) -
-          (tmp_16 * m32 + tmp_12 * m12 + tmp_15 * m22));
+    (tmp_16 * m32 + tmp_12 * m12 + tmp_15 * m22));
   dst[13] = d * ((tmp_20 * m32 + tmp_12 * m02 + tmp_19 * m22) -
-          (tmp_18 * m22 + tmp_21 * m32 + tmp_13 * m02));
+    (tmp_18 * m22 + tmp_21 * m32 + tmp_13 * m02));
   dst[14] = d * ((tmp_18 * m12 + tmp_23 * m32 + tmp_15 * m02) -
-          (tmp_22 * m32 + tmp_14 * m02 + tmp_19 * m12));
+    (tmp_22 * m32 + tmp_14 * m02 + tmp_19 * m12));
   dst[15] = d * ((tmp_22 * m22 + tmp_16 * m02 + tmp_21 * m12) -
-          (tmp_20 * m12 + tmp_23 * m22 + tmp_17 * m02));
+    (tmp_20 * m12 + tmp_23 * m22 + tmp_17 * m02));
 
   return dst;
 }
@@ -792,14 +801,14 @@ function multiply$1(a, b, dst) {
   const a01 = a[1];
   const a02 = a[2];
   const a03 = a[3];
-  const a10 = a[ 4 + 0];
-  const a11 = a[ 4 + 1];
-  const a12 = a[ 4 + 2];
-  const a13 = a[ 4 + 3];
-  const a20 = a[ 8 + 0];
-  const a21 = a[ 8 + 1];
-  const a22 = a[ 8 + 2];
-  const a23 = a[ 8 + 3];
+  const a10 = a[4 + 0];
+  const a11 = a[4 + 1];
+  const a12 = a[4 + 2];
+  const a13 = a[4 + 3];
+  const a20 = a[8 + 0];
+  const a21 = a[8 + 1];
+  const a22 = a[8 + 2];
+  const a23 = a[8 + 3];
   const a30 = a[12 + 0];
   const a31 = a[12 + 1];
   const a32 = a[12 + 2];
@@ -808,29 +817,29 @@ function multiply$1(a, b, dst) {
   const b01 = b[1];
   const b02 = b[2];
   const b03 = b[3];
-  const b10 = b[ 4 + 0];
-  const b11 = b[ 4 + 1];
-  const b12 = b[ 4 + 2];
-  const b13 = b[ 4 + 3];
-  const b20 = b[ 8 + 0];
-  const b21 = b[ 8 + 1];
-  const b22 = b[ 8 + 2];
-  const b23 = b[ 8 + 3];
+  const b10 = b[4 + 0];
+  const b11 = b[4 + 1];
+  const b12 = b[4 + 2];
+  const b13 = b[4 + 3];
+  const b20 = b[8 + 0];
+  const b21 = b[8 + 1];
+  const b22 = b[8 + 2];
+  const b23 = b[8 + 3];
   const b30 = b[12 + 0];
   const b31 = b[12 + 1];
   const b32 = b[12 + 2];
   const b33 = b[12 + 3];
 
-  dst[ 0] = a00 * b00 + a10 * b01 + a20 * b02 + a30 * b03;
-  dst[ 1] = a01 * b00 + a11 * b01 + a21 * b02 + a31 * b03;
-  dst[ 2] = a02 * b00 + a12 * b01 + a22 * b02 + a32 * b03;
-  dst[ 3] = a03 * b00 + a13 * b01 + a23 * b02 + a33 * b03;
-  dst[ 4] = a00 * b10 + a10 * b11 + a20 * b12 + a30 * b13;
-  dst[ 5] = a01 * b10 + a11 * b11 + a21 * b12 + a31 * b13;
-  dst[ 6] = a02 * b10 + a12 * b11 + a22 * b12 + a32 * b13;
-  dst[ 7] = a03 * b10 + a13 * b11 + a23 * b12 + a33 * b13;
-  dst[ 8] = a00 * b20 + a10 * b21 + a20 * b22 + a30 * b23;
-  dst[ 9] = a01 * b20 + a11 * b21 + a21 * b22 + a31 * b23;
+  dst[0] = a00 * b00 + a10 * b01 + a20 * b02 + a30 * b03;
+  dst[1] = a01 * b00 + a11 * b01 + a21 * b02 + a31 * b03;
+  dst[2] = a02 * b00 + a12 * b01 + a22 * b02 + a32 * b03;
+  dst[3] = a03 * b00 + a13 * b01 + a23 * b02 + a33 * b03;
+  dst[4] = a00 * b10 + a10 * b11 + a20 * b12 + a30 * b13;
+  dst[5] = a01 * b10 + a11 * b11 + a21 * b12 + a31 * b13;
+  dst[6] = a02 * b10 + a12 * b11 + a22 * b12 + a32 * b13;
+  dst[7] = a03 * b10 + a13 * b11 + a23 * b12 + a33 * b13;
+  dst[8] = a00 * b20 + a10 * b21 + a20 * b22 + a30 * b23;
+  dst[9] = a01 * b20 + a11 * b21 + a21 * b22 + a31 * b23;
   dst[10] = a02 * b20 + a12 * b21 + a22 * b22 + a32 * b23;
   dst[11] = a03 * b20 + a13 * b21 + a23 * b22 + a33 * b23;
   dst[12] = a00 * b30 + a10 * b31 + a20 * b32 + a30 * b33;
@@ -853,16 +862,16 @@ function multiply$1(a, b, dst) {
 function setTranslation(a, v, dst) {
   dst = dst || identity();
   if (a !== dst) {
-    dst[ 0] = a[ 0];
-    dst[ 1] = a[ 1];
-    dst[ 2] = a[ 2];
-    dst[ 3] = a[ 3];
-    dst[ 4] = a[ 4];
-    dst[ 5] = a[ 5];
-    dst[ 6] = a[ 6];
-    dst[ 7] = a[ 7];
-    dst[ 8] = a[ 8];
-    dst[ 9] = a[ 9];
+    dst[0] = a[0];
+    dst[1] = a[1];
+    dst[2] = a[2];
+    dst[3] = a[3];
+    dst[4] = a[4];
+    dst[5] = a[5];
+    dst[6] = a[6];
+    dst[7] = a[7];
+    dst[8] = a[8];
+    dst[9] = a[9];
     dst[10] = a[10];
     dst[11] = a[11];
   }
@@ -953,18 +962,18 @@ function perspective(fieldOfViewYInRadians, aspect, zNear, zFar, dst) {
   const f = Math.tan(Math.PI * 0.5 - 0.5 * fieldOfViewYInRadians);
   const rangeInv = 1.0 / (zNear - zFar);
 
-  dst[0]  = f / aspect;
-  dst[1]  = 0;
-  dst[2]  = 0;
-  dst[3]  = 0;
+  dst[0] = f / aspect;
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
 
-  dst[4]  = 0;
-  dst[5]  = f;
-  dst[6]  = 0;
-  dst[7]  = 0;
+  dst[4] = 0;
+  dst[5] = f;
+  dst[6] = 0;
+  dst[7] = 0;
 
-  dst[8]  = 0;
-  dst[9]  = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = (zNear + zFar) * rangeInv;
   dst[11] = -1;
 
@@ -995,18 +1004,18 @@ function perspective(fieldOfViewYInRadians, aspect, zNear, zFar, dst) {
 function ortho(left, right, bottom, top, near, far, dst) {
   dst = dst || new MatType(16);
 
-  dst[0]  = 2 / (right - left);
-  dst[1]  = 0;
-  dst[2]  = 0;
-  dst[3]  = 0;
+  dst[0] = 2 / (right - left);
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
 
-  dst[4]  = 0;
-  dst[5]  = 2 / (top - bottom);
-  dst[6]  = 0;
-  dst[7]  = 0;
+  dst[4] = 0;
+  dst[5] = 2 / (top - bottom);
+  dst[6] = 0;
+  dst[7] = 0;
 
-  dst[8]  = 0;
-  dst[9]  = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = 2 / (near - far);
   dst[11] = 0;
 
@@ -1044,16 +1053,16 @@ function frustum(left, right, bottom, top, near, far, dst) {
   const dy = (top - bottom);
   const dz = (near - far);
 
-  dst[ 0] = 2 * near / dx;
-  dst[ 1] = 0;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = 2 * near / dy;
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = (left + right) / dx;
-  dst[ 9] = (top + bottom) / dy;
+  dst[0] = 2 * near / dx;
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = 2 * near / dy;
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = (left + right) / dx;
+  dst[9] = (top + bottom) / dy;
   dst[10] = far / dz;
   dst[11] = -1;
   dst[12] = 0;
@@ -1090,20 +1099,20 @@ function lookAt(eye, target, up, dst) {
   zAxis = zAxis || create();
 
   normalize(
-      subtract(eye, target, zAxis), zAxis);
+    subtract(eye, target, zAxis), zAxis);
   normalize(cross(up, zAxis, xAxis), xAxis);
   normalize(cross(zAxis, xAxis, yAxis), yAxis);
 
-  dst[ 0] = xAxis[0];
-  dst[ 1] = xAxis[1];
-  dst[ 2] = xAxis[2];
-  dst[ 3] = 0;
-  dst[ 4] = yAxis[0];
-  dst[ 5] = yAxis[1];
-  dst[ 6] = yAxis[2];
-  dst[ 7] = 0;
-  dst[ 8] = zAxis[0];
-  dst[ 9] = zAxis[1];
+  dst[0] = xAxis[0];
+  dst[1] = xAxis[1];
+  dst[2] = xAxis[2];
+  dst[3] = 0;
+  dst[4] = yAxis[0];
+  dst[5] = yAxis[1];
+  dst[6] = yAxis[2];
+  dst[7] = 0;
+  dst[8] = zAxis[0];
+  dst[9] = zAxis[1];
   dst[10] = zAxis[2];
   dst[11] = 0;
   dst[12] = eye[0];
@@ -1125,16 +1134,16 @@ function lookAt(eye, target, up, dst) {
 function translation(v, dst) {
   dst = dst || new MatType(16);
 
-  dst[ 0] = 1;
-  dst[ 1] = 0;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = 1;
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = 0;
-  dst[ 9] = 0;
+  dst[0] = 1;
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = 1;
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = 1;
   dst[11] = 0;
   dst[12] = v[0];
@@ -1177,16 +1186,16 @@ function translate(m, v, dst) {
   const m33 = m[3 * 4 + 3];
 
   if (m !== dst) {
-    dst[ 0] = m00;
-    dst[ 1] = m01;
-    dst[ 2] = m02;
-    dst[ 3] = m03;
-    dst[ 4] = m10;
-    dst[ 5] = m11;
-    dst[ 6] = m12;
-    dst[ 7] = m13;
-    dst[ 8] = m20;
-    dst[ 9] = m21;
+    dst[0] = m00;
+    dst[1] = m01;
+    dst[2] = m02;
+    dst[3] = m03;
+    dst[4] = m10;
+    dst[5] = m11;
+    dst[6] = m12;
+    dst[7] = m13;
+    dst[8] = m20;
+    dst[9] = m21;
     dst[10] = m22;
     dst[11] = m23;
   }
@@ -1212,16 +1221,16 @@ function rotationX(angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[ 0] = 1;
-  dst[ 1] = 0;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = c;
-  dst[ 6] = s;
-  dst[ 7] = 0;
-  dst[ 8] = 0;
-  dst[ 9] = -s;
+  dst[0] = 1;
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = c;
+  dst[6] = s;
+  dst[7] = 0;
+  dst[8] = 0;
+  dst[9] = -s;
   dst[10] = c;
   dst[11] = 0;
   dst[12] = 0;
@@ -1255,20 +1264,20 @@ function rotateX(m, angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[4]  = c * m10 + s * m20;
-  dst[5]  = c * m11 + s * m21;
-  dst[6]  = c * m12 + s * m22;
-  dst[7]  = c * m13 + s * m23;
-  dst[8]  = c * m20 - s * m10;
-  dst[9]  = c * m21 - s * m11;
+  dst[4] = c * m10 + s * m20;
+  dst[5] = c * m11 + s * m21;
+  dst[6] = c * m12 + s * m22;
+  dst[7] = c * m13 + s * m23;
+  dst[8] = c * m20 - s * m10;
+  dst[9] = c * m21 - s * m11;
   dst[10] = c * m22 - s * m12;
   dst[11] = c * m23 - s * m13;
 
   if (m !== dst) {
-    dst[ 0] = m[ 0];
-    dst[ 1] = m[ 1];
-    dst[ 2] = m[ 2];
-    dst[ 3] = m[ 3];
+    dst[0] = m[0];
+    dst[1] = m[1];
+    dst[2] = m[2];
+    dst[3] = m[3];
     dst[12] = m[12];
     dst[13] = m[13];
     dst[14] = m[14];
@@ -1291,16 +1300,16 @@ function rotationY(angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[ 0] = c;
-  dst[ 1] = 0;
-  dst[ 2] = -s;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = 1;
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = s;
-  dst[ 9] = 0;
+  dst[0] = c;
+  dst[1] = 0;
+  dst[2] = -s;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = 1;
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = s;
+  dst[9] = 0;
   dst[10] = c;
   dst[11] = 0;
   dst[12] = 0;
@@ -1334,20 +1343,20 @@ function rotateY(m, angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[ 0] = c * m00 - s * m20;
-  dst[ 1] = c * m01 - s * m21;
-  dst[ 2] = c * m02 - s * m22;
-  dst[ 3] = c * m03 - s * m23;
-  dst[ 8] = c * m20 + s * m00;
-  dst[ 9] = c * m21 + s * m01;
+  dst[0] = c * m00 - s * m20;
+  dst[1] = c * m01 - s * m21;
+  dst[2] = c * m02 - s * m22;
+  dst[3] = c * m03 - s * m23;
+  dst[8] = c * m20 + s * m00;
+  dst[9] = c * m21 + s * m01;
   dst[10] = c * m22 + s * m02;
   dst[11] = c * m23 + s * m03;
 
   if (m !== dst) {
-    dst[ 4] = m[ 4];
-    dst[ 5] = m[ 5];
-    dst[ 6] = m[ 6];
-    dst[ 7] = m[ 7];
+    dst[4] = m[4];
+    dst[5] = m[5];
+    dst[6] = m[6];
+    dst[7] = m[7];
     dst[12] = m[12];
     dst[13] = m[13];
     dst[14] = m[14];
@@ -1370,16 +1379,16 @@ function rotationZ(angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[ 0] = c;
-  dst[ 1] = s;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = -s;
-  dst[ 5] = c;
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = 0;
-  dst[ 9] = 0;
+  dst[0] = c;
+  dst[1] = s;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = -s;
+  dst[5] = c;
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = 1;
   dst[11] = 0;
   dst[12] = 0;
@@ -1413,18 +1422,18 @@ function rotateZ(m, angleInRadians, dst) {
   const c = Math.cos(angleInRadians);
   const s = Math.sin(angleInRadians);
 
-  dst[ 0] = c * m00 + s * m10;
-  dst[ 1] = c * m01 + s * m11;
-  dst[ 2] = c * m02 + s * m12;
-  dst[ 3] = c * m03 + s * m13;
-  dst[ 4] = c * m10 - s * m00;
-  dst[ 5] = c * m11 - s * m01;
-  dst[ 6] = c * m12 - s * m02;
-  dst[ 7] = c * m13 - s * m03;
+  dst[0] = c * m00 + s * m10;
+  dst[1] = c * m01 + s * m11;
+  dst[2] = c * m02 + s * m12;
+  dst[3] = c * m03 + s * m13;
+  dst[4] = c * m10 - s * m00;
+  dst[5] = c * m11 - s * m01;
+  dst[6] = c * m12 - s * m02;
+  dst[7] = c * m13 - s * m03;
 
   if (m !== dst) {
-    dst[ 8] = m[ 8];
-    dst[ 9] = m[ 9];
+    dst[8] = m[8];
+    dst[9] = m[9];
     dst[10] = m[10];
     dst[11] = m[11];
     dst[12] = m[12];
@@ -1464,16 +1473,16 @@ function axisRotation(axis, angleInRadians, dst) {
   const s = Math.sin(angleInRadians);
   const oneMinusCosine = 1 - c;
 
-  dst[ 0] = xx + (1 - xx) * c;
-  dst[ 1] = x * y * oneMinusCosine + z * s;
-  dst[ 2] = x * z * oneMinusCosine - y * s;
-  dst[ 3] = 0;
-  dst[ 4] = x * y * oneMinusCosine - z * s;
-  dst[ 5] = yy + (1 - yy) * c;
-  dst[ 6] = y * z * oneMinusCosine + x * s;
-  dst[ 7] = 0;
-  dst[ 8] = x * z * oneMinusCosine + y * s;
-  dst[ 9] = y * z * oneMinusCosine - x * s;
+  dst[0] = xx + (1 - xx) * c;
+  dst[1] = x * y * oneMinusCosine + z * s;
+  dst[2] = x * z * oneMinusCosine - y * s;
+  dst[3] = 0;
+  dst[4] = x * y * oneMinusCosine - z * s;
+  dst[5] = yy + (1 - yy) * c;
+  dst[6] = y * z * oneMinusCosine + x * s;
+  dst[7] = 0;
+  dst[8] = x * z * oneMinusCosine + y * s;
+  dst[9] = y * z * oneMinusCosine - x * s;
   dst[10] = zz + (1 - zz) * c;
   dst[11] = 0;
   dst[12] = 0;
@@ -1535,16 +1544,16 @@ function axisRotate(m, axis, angleInRadians, dst) {
   const m22 = m[10];
   const m23 = m[11];
 
-  dst[ 0] = r00 * m00 + r01 * m10 + r02 * m20;
-  dst[ 1] = r00 * m01 + r01 * m11 + r02 * m21;
-  dst[ 2] = r00 * m02 + r01 * m12 + r02 * m22;
-  dst[ 3] = r00 * m03 + r01 * m13 + r02 * m23;
-  dst[ 4] = r10 * m00 + r11 * m10 + r12 * m20;
-  dst[ 5] = r10 * m01 + r11 * m11 + r12 * m21;
-  dst[ 6] = r10 * m02 + r11 * m12 + r12 * m22;
-  dst[ 7] = r10 * m03 + r11 * m13 + r12 * m23;
-  dst[ 8] = r20 * m00 + r21 * m10 + r22 * m20;
-  dst[ 9] = r20 * m01 + r21 * m11 + r22 * m21;
+  dst[0] = r00 * m00 + r01 * m10 + r02 * m20;
+  dst[1] = r00 * m01 + r01 * m11 + r02 * m21;
+  dst[2] = r00 * m02 + r01 * m12 + r02 * m22;
+  dst[3] = r00 * m03 + r01 * m13 + r02 * m23;
+  dst[4] = r10 * m00 + r11 * m10 + r12 * m20;
+  dst[5] = r10 * m01 + r11 * m11 + r12 * m21;
+  dst[6] = r10 * m02 + r11 * m12 + r12 * m22;
+  dst[7] = r10 * m03 + r11 * m13 + r12 * m23;
+  dst[8] = r20 * m00 + r21 * m10 + r22 * m20;
+  dst[9] = r20 * m01 + r21 * m11 + r22 * m21;
   dst[10] = r20 * m02 + r21 * m12 + r22 * m22;
   dst[11] = r20 * m03 + r21 * m13 + r22 * m23;
 
@@ -1571,16 +1580,16 @@ function axisRotate(m, axis, angleInRadians, dst) {
 function scaling(v, dst) {
   dst = dst || new MatType(16);
 
-  dst[ 0] = v[0];
-  dst[ 1] = 0;
-  dst[ 2] = 0;
-  dst[ 3] = 0;
-  dst[ 4] = 0;
-  dst[ 5] = v[1];
-  dst[ 6] = 0;
-  dst[ 7] = 0;
-  dst[ 8] = 0;
-  dst[ 9] = 0;
+  dst[0] = v[0];
+  dst[1] = 0;
+  dst[2] = 0;
+  dst[3] = 0;
+  dst[4] = 0;
+  dst[5] = v[1];
+  dst[6] = 0;
+  dst[7] = 0;
+  dst[8] = 0;
+  dst[9] = 0;
   dst[10] = v[2];
   dst[11] = 0;
   dst[12] = 0;
@@ -1609,16 +1618,16 @@ function scale(m, v, dst) {
   const v1 = v[1];
   const v2 = v[2];
 
-  dst[ 0] = v0 * m[0 * 4 + 0];
-  dst[ 1] = v0 * m[0 * 4 + 1];
-  dst[ 2] = v0 * m[0 * 4 + 2];
-  dst[ 3] = v0 * m[0 * 4 + 3];
-  dst[ 4] = v1 * m[1 * 4 + 0];
-  dst[ 5] = v1 * m[1 * 4 + 1];
-  dst[ 6] = v1 * m[1 * 4 + 2];
-  dst[ 7] = v1 * m[1 * 4 + 3];
-  dst[ 8] = v2 * m[2 * 4 + 0];
-  dst[ 9] = v2 * m[2 * 4 + 1];
+  dst[0] = v0 * m[0 * 4 + 0];
+  dst[1] = v0 * m[0 * 4 + 1];
+  dst[2] = v0 * m[0 * 4 + 2];
+  dst[3] = v0 * m[0 * 4 + 3];
+  dst[4] = v1 * m[1 * 4 + 0];
+  dst[5] = v1 * m[1 * 4 + 1];
+  dst[6] = v1 * m[1 * 4 + 2];
+  dst[7] = v1 * m[1 * 4 + 3];
+  dst[8] = v2 * m[2 * 4 + 0];
+  dst[9] = v2 * m[2 * 4 + 1];
   dst[10] = v2 * m[2 * 4 + 2];
   dst[11] = v2 * m[2 * 4 + 3];
 
@@ -1717,6 +1726,7 @@ var m4 = /*#__PURE__*/Object.freeze({
   axisRotate: axisRotate,
   axisRotation: axisRotation,
   copy: copy$1,
+  create: create$1,
   frustum: frustum,
   getAxis: getAxis,
   getTranslation: getTranslation,
@@ -1769,42 +1779,42 @@ var m4 = /*#__PURE__*/Object.freeze({
  */
 
 /* DataType */
-const BYTE                           = 0x1400;
-const UNSIGNED_BYTE                  = 0x1401;
-const SHORT                          = 0x1402;
-const UNSIGNED_SHORT                 = 0x1403;
-const INT                            = 0x1404;
-const UNSIGNED_INT                   = 0x1405;
-const FLOAT                          = 0x1406;
-const UNSIGNED_SHORT_4_4_4_4       = 0x8033;
-const UNSIGNED_SHORT_5_5_5_1       = 0x8034;
-const UNSIGNED_SHORT_5_6_5         = 0x8363;
-const HALF_FLOAT                   = 0x140B;
-const UNSIGNED_INT_2_10_10_10_REV  = 0x8368;
+const BYTE = 0x1400;
+const UNSIGNED_BYTE = 0x1401;
+const SHORT = 0x1402;
+const UNSIGNED_SHORT = 0x1403;
+const INT = 0x1404;
+const UNSIGNED_INT = 0x1405;
+const FLOAT = 0x1406;
+const UNSIGNED_SHORT_4_4_4_4 = 0x8033;
+const UNSIGNED_SHORT_5_5_5_1 = 0x8034;
+const UNSIGNED_SHORT_5_6_5 = 0x8363;
+const HALF_FLOAT = 0x140B;
+const UNSIGNED_INT_2_10_10_10_REV = 0x8368;
 const UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B;
-const UNSIGNED_INT_5_9_9_9_REV     = 0x8C3E;
+const UNSIGNED_INT_5_9_9_9_REV = 0x8C3E;
 const FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD;
-const UNSIGNED_INT_24_8            = 0x84FA;
+const UNSIGNED_INT_24_8 = 0x84FA;
 
 const glTypeToTypedArray = {};
 {
   const tt = glTypeToTypedArray;
-  tt[BYTE]                           = Int8Array;
-  tt[UNSIGNED_BYTE]                  = Uint8Array;
-  tt[SHORT]                          = Int16Array;
-  tt[UNSIGNED_SHORT]                 = Uint16Array;
-  tt[INT]                            = Int32Array;
-  tt[UNSIGNED_INT]                   = Uint32Array;
-  tt[FLOAT]                          = Float32Array;
-  tt[UNSIGNED_SHORT_4_4_4_4]         = Uint16Array;
-  tt[UNSIGNED_SHORT_5_5_5_1]         = Uint16Array;
-  tt[UNSIGNED_SHORT_5_6_5]           = Uint16Array;
-  tt[HALF_FLOAT]                     = Uint16Array;
-  tt[UNSIGNED_INT_2_10_10_10_REV]    = Uint32Array;
-  tt[UNSIGNED_INT_10F_11F_11F_REV]   = Uint32Array;
-  tt[UNSIGNED_INT_5_9_9_9_REV]       = Uint32Array;
+  tt[BYTE] = Int8Array;
+  tt[UNSIGNED_BYTE] = Uint8Array;
+  tt[SHORT] = Int16Array;
+  tt[UNSIGNED_SHORT] = Uint16Array;
+  tt[INT] = Int32Array;
+  tt[UNSIGNED_INT] = Uint32Array;
+  tt[FLOAT] = Float32Array;
+  tt[UNSIGNED_SHORT_4_4_4_4] = Uint16Array;
+  tt[UNSIGNED_SHORT_5_5_5_1] = Uint16Array;
+  tt[UNSIGNED_SHORT_5_6_5] = Uint16Array;
+  tt[HALF_FLOAT] = Uint16Array;
+  tt[UNSIGNED_INT_2_10_10_10_REV] = Uint32Array;
+  tt[UNSIGNED_INT_10F_11F_11F_REV] = Uint32Array;
+  tt[UNSIGNED_INT_5_9_9_9_REV] = Uint32Array;
   tt[FLOAT_32_UNSIGNED_INT_24_8_REV] = Uint32Array;
-  tt[UNSIGNED_INT_24_8]              = Uint32Array;
+  tt[UNSIGNED_INT_24_8] = Uint32Array;
 }
 
 /**
@@ -1815,14 +1825,14 @@ const glTypeToTypedArray = {};
  * @memberOf module:twgl/typedArray
  */
 function getGLTypeForTypedArray(typedArray) {
-  if (typedArray instanceof Int8Array)         { return BYTE; }           // eslint-disable-line
-  if (typedArray instanceof Uint8Array)        { return UNSIGNED_BYTE; }  // eslint-disable-line
+  if (typedArray instanceof Int8Array) { return BYTE; }           // eslint-disable-line
+  if (typedArray instanceof Uint8Array) { return UNSIGNED_BYTE; }  // eslint-disable-line
   if (typedArray instanceof Uint8ClampedArray) { return UNSIGNED_BYTE; }  // eslint-disable-line
-  if (typedArray instanceof Int16Array)        { return SHORT; }          // eslint-disable-line
-  if (typedArray instanceof Uint16Array)       { return UNSIGNED_SHORT; } // eslint-disable-line
-  if (typedArray instanceof Int32Array)        { return INT; }            // eslint-disable-line
-  if (typedArray instanceof Uint32Array)       { return UNSIGNED_INT; }   // eslint-disable-line
-  if (typedArray instanceof Float32Array)      { return FLOAT; }          // eslint-disable-line
+  if (typedArray instanceof Int16Array) { return SHORT; }          // eslint-disable-line
+  if (typedArray instanceof Uint16Array) { return UNSIGNED_SHORT; } // eslint-disable-line
+  if (typedArray instanceof Int32Array) { return INT; }            // eslint-disable-line
+  if (typedArray instanceof Uint32Array) { return UNSIGNED_INT; }   // eslint-disable-line
+  if (typedArray instanceof Float32Array) { return FLOAT; }          // eslint-disable-line
   throw new Error('unsupported typed array type');
 }
 
@@ -1834,14 +1844,14 @@ function getGLTypeForTypedArray(typedArray) {
  * @memberOf module:twgl/typedArray
  */
 function getGLTypeForTypedArrayType(typedArrayType) {
-  if (typedArrayType === Int8Array)         { return BYTE; }           // eslint-disable-line
-  if (typedArrayType === Uint8Array)        { return UNSIGNED_BYTE; }  // eslint-disable-line
+  if (typedArrayType === Int8Array) { return BYTE; }           // eslint-disable-line
+  if (typedArrayType === Uint8Array) { return UNSIGNED_BYTE; }  // eslint-disable-line
   if (typedArrayType === Uint8ClampedArray) { return UNSIGNED_BYTE; }  // eslint-disable-line
-  if (typedArrayType === Int16Array)        { return SHORT; }          // eslint-disable-line
-  if (typedArrayType === Uint16Array)       { return UNSIGNED_SHORT; } // eslint-disable-line
-  if (typedArrayType === Int32Array)        { return INT; }            // eslint-disable-line
-  if (typedArrayType === Uint32Array)       { return UNSIGNED_INT; }   // eslint-disable-line
-  if (typedArrayType === Float32Array)      { return FLOAT; }          // eslint-disable-line
+  if (typedArrayType === Int16Array) { return SHORT; }          // eslint-disable-line
+  if (typedArrayType === Uint16Array) { return UNSIGNED_SHORT; } // eslint-disable-line
+  if (typedArrayType === Int32Array) { return INT; }            // eslint-disable-line
+  if (typedArrayType === Uint32Array) { return UNSIGNED_INT; }   // eslint-disable-line
+  if (typedArrayType === Float32Array) { return FLOAT; }          // eslint-disable-line
   throw new Error('unsupported typed array type');
 }
 
@@ -1908,7 +1918,7 @@ var typedarrays = /*#__PURE__*/Object.freeze({
  * @private
  */
 function copyNamedProperties(names, src, dst) {
-  names.forEach(function(name) {
+  names.forEach(function (name) {
     const value = src[name];
     if (value !== undefined) {
       dst[name] = value;
@@ -1924,7 +1934,7 @@ function copyNamedProperties(names, src, dst) {
  * @private
  */
 function copyExistingProperties(src, dst) {
-  Object.keys(dst).forEach(function(key) {
+  Object.keys(dst).forEach(function (key) {
     if (dst.hasOwnProperty(key) && src.hasOwnProperty(key)) {  /* eslint no-prototype-builtins: 0 */
       dst[key] = src[key];
     }
@@ -1981,18 +1991,18 @@ function isSampler(gl, t) {
  * DEALINGS IN THE SOFTWARE.
  */
 
-const STATIC_DRAW                  = 0x88e4;
-const ARRAY_BUFFER                 = 0x8892;
-const ELEMENT_ARRAY_BUFFER         = 0x8893;
-const BUFFER_SIZE                  = 0x8764;
+const STATIC_DRAW = 0x88e4;
+const ARRAY_BUFFER = 0x8892;
+const ELEMENT_ARRAY_BUFFER = 0x8893;
+const BUFFER_SIZE = 0x8764;
 
-const BYTE$1                         = 0x1400;
-const UNSIGNED_BYTE$1                = 0x1401;
-const SHORT$1                        = 0x1402;
-const UNSIGNED_SHORT$1               = 0x1403;
-const INT$1                          = 0x1404;
-const UNSIGNED_INT$1                 = 0x1405;
-const FLOAT$1                        = 0x1406;
+const BYTE$1 = 0x1400;
+const UNSIGNED_BYTE$1 = 0x1401;
+const SHORT$1 = 0x1402;
+const UNSIGNED_SHORT$1 = 0x1403;
+const INT$1 = 0x1404;
+const UNSIGNED_INT$1 = 0x1405;
+const FLOAT$1 = 0x1406;
 const defaults = {
   attribPrefix: "",
 };
@@ -2058,16 +2068,16 @@ function isIndices(name) {
 // This is really just a guess. Though I can't really imagine using
 // anything else? Maybe for some compression?
 function getNormalizationForTypedArray(typedArray) {
-  if (typedArray instanceof Int8Array)    { return true; }  // eslint-disable-line
-  if (typedArray instanceof Uint8Array)   { return true; }  // eslint-disable-line
+  if (typedArray instanceof Int8Array) { return true; }  // eslint-disable-line
+  if (typedArray instanceof Uint8Array) { return true; }  // eslint-disable-line
   return false;
 }
 
 // This is really just a guess. Though I can't really imagine using
 // anything else? Maybe for some compression?
 function getNormalizationForTypedArrayType(typedArrayType) {
-  if (typedArrayType === Int8Array)    { return true; }  // eslint-disable-line
-  if (typedArrayType === Uint8Array)   { return true; }  // eslint-disable-line
+  if (typedArrayType === Int8Array) { return true; }  // eslint-disable-line
+  if (typedArrayType === Uint8Array) { return true; }  // eslint-disable-line
   return false;
 }
 
@@ -2293,7 +2303,7 @@ function makeTypedArray(array, name) {
  */
 function createAttribsFromArrays(gl, arrays) {
   const attribs = {};
-  Object.keys(arrays).forEach(function(arrayName) {
+  Object.keys(arrays).forEach(function (arrayName) {
     if (!isIndices(arrayName)) {
       const array = arrays[arrayName];
       const attribName = array.attrib || array.name || array.attribName || (defaults.attribPrefix + arrayName);
@@ -2332,14 +2342,14 @@ function createAttribsFromArrays(gl, arrays) {
           numComponents = getNumComponents(array, arrayName);
         }
         attribs[attribName] = {
-          buffer:        buffer,
+          buffer: buffer,
           numComponents: numComponents,
-          type:          type,
-          normalize:     normalization,
-          stride:        array.stride || 0,
-          offset:        array.offset || 0,
-          divisor:       array.divisor === undefined ? undefined : array.divisor,
-          drawType:      array.drawType,
+          type: type,
+          normalize: normalization,
+          stride: array.stride || 0,
+          offset: array.offset || 0,
+          divisor: array.divisor === undefined ? undefined : array.divisor,
+          drawType: array.drawType,
         };
       }
     }
@@ -2395,13 +2405,13 @@ function setAttribInfoBufferFromArray(gl, attribInfo, array, offset) {
 }
 
 function getBytesPerValueForGLType(gl, type) {
-  if (type === BYTE$1)           return 1;  // eslint-disable-line
-  if (type === UNSIGNED_BYTE$1)  return 1;  // eslint-disable-line
-  if (type === SHORT$1)          return 2;  // eslint-disable-line
+  if (type === BYTE$1) return 1;  // eslint-disable-line
+  if (type === UNSIGNED_BYTE$1) return 1;  // eslint-disable-line
+  if (type === SHORT$1) return 2;  // eslint-disable-line
   if (type === UNSIGNED_SHORT$1) return 2;  // eslint-disable-line
-  if (type === INT$1)            return 4;  // eslint-disable-line
-  if (type === UNSIGNED_INT$1)   return 4;  // eslint-disable-line
-  if (type === FLOAT$1)          return 4;  // eslint-disable-line
+  if (type === INT$1) return 4;  // eslint-disable-line
+  if (type === UNSIGNED_INT$1) return 4;  // eslint-disable-line
+  if (type === FLOAT$1) return 4;  // eslint-disable-line
   return 0;
 }
 
@@ -2421,6 +2431,9 @@ function getNumElementsFromNonIndexedArrays(arrays) {
   }
   const array = arrays[key];
   const length = getArray(array).length;
+  if (length === undefined) {
+    return 1;   // There's no arrays
+  }
   const numComponents = getNumComponents(array, key);
   const numElements = length / numComponents;
   if (length % numComponents > 0) {
@@ -2446,6 +2459,9 @@ function getNumElementsFromAttributes(gl, attribs) {
     key = Object.keys(attribs)[0];
   }
   const attrib = attribs[key];
+  if (!attrib.buffer) {
+    return 1; // There's no buffer
+  }
   gl.bindBuffer(ARRAY_BUFFER, attrib.buffer);
   const numBytes = gl.getBufferParameter(ARRAY_BUFFER, BUFFER_SIZE);
   gl.bindBuffer(ARRAY_BUFFER, null);
@@ -2640,8 +2656,8 @@ function createBufferFromArray(gl, array, arrayName) {
  * @memberOf module:twgl/attributes
  */
 function createBuffersFromArrays(gl, arrays) {
-  const buffers = { };
-  Object.keys(arrays).forEach(function(key) {
+  const buffers = {};
+  Object.keys(arrays).forEach(function (key) {
     buffers[key] = createBufferFromArray(gl, arrays[key], key);
   });
 
@@ -2709,7 +2725,7 @@ const getNumComponents$1 = getNumComponents;  // eslint-disable-line
  */
 function augmentTypedArray(typedArray, numComponents) {
   let cursor = 0;
-  typedArray.push = function() {
+  typedArray.push = function () {
     for (let ii = 0; ii < arguments.length; ++ii) {
       const value = arguments[ii];
       if (value instanceof Array || isArrayBuffer(value)) {
@@ -2721,12 +2737,12 @@ function augmentTypedArray(typedArray, numComponents) {
       }
     }
   };
-  typedArray.reset = function(opt_index) {
+  typedArray.reset = function (opt_index) {
     cursor = opt_index || 0;
   };
   typedArray.numComponents = numComponents;
   Object.defineProperty(typedArray, 'numElements', {
-    get: function() {
+    get: function () {
       return this.length / this.numComponents | 0;
     },
   });
@@ -2855,7 +2871,7 @@ function applyFuncToV3Array(array, matrix, fn) {
   const tmp = new Float32Array(3);
   for (let ii = 0; ii < len; ii += 3) {
     fn(matrix, [array[ii], array[ii + 1], array[ii + 2]], tmp);
-    array[ii    ] = tmp[0];
+    array[ii] = tmp[0];
     array[ii + 1] = tmp[1];
     array[ii + 2] = tmp[2];
   }
@@ -2927,7 +2943,7 @@ function reorientPositions(array, matrix) {
  * @memberOf module:twgl/primitives
  */
 function reorientVertices(arrays, matrix) {
-  Object.keys(arrays).forEach(function(name) {
+  Object.keys(arrays).forEach(function (name) {
     const array = arrays[name];
     if (name.indexOf("pos") >= 0) {
       reorientPositions(array, matrix);
@@ -3010,9 +3026,9 @@ function createXYQuadVertices(size, xOffset, yOffset) {
       numComponents: 2,
       data: [
         xOffset + -1 * size, yOffset + -1 * size,
-        xOffset +  1 * size, yOffset + -1 * size,
-        xOffset + -1 * size, yOffset +  1 * size,
-        xOffset +  1 * size, yOffset +  1 * size,
+        xOffset + 1 * size, yOffset + -1 * size,
+        xOffset + -1 * size, yOffset + 1 * size,
+        xOffset + 1 * size, yOffset + 1 * size,
       ],
     },
     normal: [
@@ -3027,7 +3043,7 @@ function createXYQuadVertices(size, xOffset, yOffset) {
       0, 1,
       1, 1,
     ],
-    indices: [ 0, 1, 2, 2, 1, 3 ],
+    indices: [0, 1, 2, 2, 1, 3],
   };
 }
 
@@ -3077,11 +3093,11 @@ function createXYQuadVertices(size, xOffset, yOffset) {
  * @memberOf module:twgl/primitives
  */
 function createPlaneVertices(
-    width,
-    depth,
-    subdivisionsWidth,
-    subdivisionsDepth,
-    matrix) {
+  width,
+  depth,
+  subdivisionsWidth,
+  subdivisionsDepth,
+  matrix) {
   width = width || 1;
   depth = depth || 1;
   subdivisionsWidth = subdivisionsWidth || 1;
@@ -3098,9 +3114,9 @@ function createPlaneVertices(
       const u = x / subdivisionsWidth;
       const v = z / subdivisionsDepth;
       positions.push(
-          width * u - width * 0.5,
-          0,
-          depth * v - depth * 0.5);
+        width * u - width * 0.5,
+        0,
+        depth * v - depth * 0.5);
       normals.push(0, 1, 0);
       texcoords.push(u, v);
     }
@@ -3108,21 +3124,21 @@ function createPlaneVertices(
 
   const numVertsAcross = subdivisionsWidth + 1;
   const indices = createAugmentedTypedArray(
-      3, subdivisionsWidth * subdivisionsDepth * 2, Uint16Array);
+    3, subdivisionsWidth * subdivisionsDepth * 2, Uint16Array);
 
   for (let z = 0; z < subdivisionsDepth; z++) {  // eslint-disable-line
     for (let x = 0; x < subdivisionsWidth; x++) {  // eslint-disable-line
       // Make triangle 1 of quad.
       indices.push(
-          (z + 0) * numVertsAcross + x,
-          (z + 1) * numVertsAcross + x,
-          (z + 0) * numVertsAcross + x + 1);
+        (z + 0) * numVertsAcross + x,
+        (z + 1) * numVertsAcross + x,
+        (z + 0) * numVertsAcross + x + 1);
 
       // Make triangle 2 of quad.
       indices.push(
-          (z + 1) * numVertsAcross + x,
-          (z + 1) * numVertsAcross + x + 1,
-          (z + 0) * numVertsAcross + x + 1);
+        (z + 1) * numVertsAcross + x,
+        (z + 1) * numVertsAcross + x + 1,
+        (z + 0) * numVertsAcross + x + 1);
     }
   }
 
@@ -3199,13 +3215,13 @@ function createPlaneVertices(
  * @memberOf module:twgl/primitives
  */
 function createSphereVertices(
-    radius,
-    subdivisionsAxis,
-    subdivisionsHeight,
-    opt_startLatitudeInRadians,
-    opt_endLatitudeInRadians,
-    opt_startLongitudeInRadians,
-    opt_endLongitudeInRadians) {
+  radius,
+  subdivisionsAxis,
+  subdivisionsHeight,
+  opt_startLatitudeInRadians,
+  opt_endLatitudeInRadians,
+  opt_startLongitudeInRadians,
+  opt_endLongitudeInRadians) {
   if (subdivisionsAxis <= 0 || subdivisionsHeight <= 0) {
     throw new Error('subdivisionAxis and subdivisionHeight must be > 0');
   }
@@ -3223,7 +3239,7 @@ function createSphereVertices(
   // ring of the sphere.
   const numVertices = (subdivisionsAxis + 1) * (subdivisionsHeight + 1);
   const positions = createAugmentedTypedArray(3, numVertices);
-  const normals   = createAugmentedTypedArray(3, numVertices);
+  const normals = createAugmentedTypedArray(3, numVertices);
   const texcoords = createAugmentedTypedArray(2, numVertices);
 
   // Generate the individual vertices in our vertex buffer.
@@ -3253,15 +3269,15 @@ function createSphereVertices(
     for (let y = 0; y < subdivisionsHeight; y++) {  // eslint-disable-line
       // Make triangle 1 of quad.
       indices.push(
-          (y + 0) * numVertsAround + x,
-          (y + 0) * numVertsAround + x + 1,
-          (y + 1) * numVertsAround + x);
+        (y + 0) * numVertsAround + x,
+        (y + 0) * numVertsAround + x + 1,
+        (y + 1) * numVertsAround + x);
 
       // Make triangle 2 of quad.
       indices.push(
-          (y + 1) * numVertsAround + x,
-          (y + 0) * numVertsAround + x + 1,
-          (y + 1) * numVertsAround + x + 1);
+        (y + 1) * numVertsAround + x,
+        (y + 0) * numVertsAround + x + 1,
+        (y + 1) * numVertsAround + x + 1);
     }
   }
 
@@ -3353,9 +3369,9 @@ function createCubeVertices(size) {
 
   const numVertices = 6 * 4;
   const positions = createAugmentedTypedArray(3, numVertices);
-  const normals   = createAugmentedTypedArray(3, numVertices);
-  const texcoords = createAugmentedTypedArray(2 , numVertices);
-  const indices   = createAugmentedTypedArray(3, 6 * 2, Uint16Array);
+  const normals = createAugmentedTypedArray(3, numVertices);
+  const texcoords = createAugmentedTypedArray(2, numVertices);
+  const indices = createAugmentedTypedArray(3, 6 * 2, Uint16Array);
 
   for (let f = 0; f < 6; ++f) {
     const faceIndices = CUBE_FACE_INDICES[f];
@@ -3449,13 +3465,13 @@ function createCubeVertices(size) {
  * @memberOf module:twgl/primitives
  */
 function createTruncatedConeVertices(
-    bottomRadius,
-    topRadius,
-    height,
-    radialSubdivisions,
-    verticalSubdivisions,
-    opt_topCap,
-    opt_bottomCap) {
+  bottomRadius,
+  topRadius,
+  height,
+  radialSubdivisions,
+  verticalSubdivisions,
+  opt_topCap,
+  opt_bottomCap) {
   if (radialSubdivisions < 3) {
     throw new Error('radialSubdivisions must be 3 or greater');
   }
@@ -3471,9 +3487,9 @@ function createTruncatedConeVertices(
 
   const numVertices = (radialSubdivisions + 1) * (verticalSubdivisions + 1 + extra);
   const positions = createAugmentedTypedArray(3, numVertices);
-  const normals   = createAugmentedTypedArray(3, numVertices);
+  const normals = createAugmentedTypedArray(3, numVertices);
   const texcoords = createAugmentedTypedArray(2, numVertices);
-  const indices   = createAugmentedTypedArray(3, radialSubdivisions * (verticalSubdivisions + extra / 2) * 2, Uint16Array);
+  const indices = createAugmentedTypedArray(3, radialSubdivisions * (verticalSubdivisions + extra / 2) * 2, Uint16Array);
 
   const vertsAroundEdge = radialSubdivisions + 1;
 
@@ -3529,11 +3545,11 @@ function createTruncatedConeVertices(
     }
     for (let ii = 0; ii < radialSubdivisions; ++ii) {  // eslint-disable-line
       indices.push(vertsAroundEdge * (yy + 0) + 0 + ii,
-                   vertsAroundEdge * (yy + 0) + 1 + ii,
-                   vertsAroundEdge * (yy + 1) + 1 + ii);
+        vertsAroundEdge * (yy + 0) + 1 + ii,
+        vertsAroundEdge * (yy + 1) + 1 + ii);
       indices.push(vertsAroundEdge * (yy + 0) + 0 + ii,
-                   vertsAroundEdge * (yy + 1) + 1 + ii,
-                   vertsAroundEdge * (yy + 1) + 0 + ii);
+        vertsAroundEdge * (yy + 1) + 1 + ii,
+        vertsAroundEdge * (yy + 1) + 0 + ii);
     }
   }
 
@@ -3600,132 +3616,132 @@ function create3DFVertices() {
 
   const positions = [
     // left column front
-    0,   0,  0,
-    0, 150,  0,
-    30,   0,  0,
-    0, 150,  0,
-    30, 150,  0,
-    30,   0,  0,
+    0, 0, 0,
+    0, 150, 0,
+    30, 0, 0,
+    0, 150, 0,
+    30, 150, 0,
+    30, 0, 0,
 
     // top rung front
-    30,   0,  0,
-    30,  30,  0,
-    100,   0,  0,
-    30,  30,  0,
-    100,  30,  0,
-    100,   0,  0,
+    30, 0, 0,
+    30, 30, 0,
+    100, 0, 0,
+    30, 30, 0,
+    100, 30, 0,
+    100, 0, 0,
 
     // middle rung front
-    30,  60,  0,
-    30,  90,  0,
-    67,  60,  0,
-    30,  90,  0,
-    67,  90,  0,
-    67,  60,  0,
+    30, 60, 0,
+    30, 90, 0,
+    67, 60, 0,
+    30, 90, 0,
+    67, 90, 0,
+    67, 60, 0,
 
     // left column back
-      0,   0,  30,
-     30,   0,  30,
-      0, 150,  30,
-      0, 150,  30,
-     30,   0,  30,
-     30, 150,  30,
+    0, 0, 30,
+    30, 0, 30,
+    0, 150, 30,
+    0, 150, 30,
+    30, 0, 30,
+    30, 150, 30,
 
     // top rung back
-     30,   0,  30,
-    100,   0,  30,
-     30,  30,  30,
-     30,  30,  30,
-    100,   0,  30,
-    100,  30,  30,
+    30, 0, 30,
+    100, 0, 30,
+    30, 30, 30,
+    30, 30, 30,
+    100, 0, 30,
+    100, 30, 30,
 
     // middle rung back
-     30,  60,  30,
-     67,  60,  30,
-     30,  90,  30,
-     30,  90,  30,
-     67,  60,  30,
-     67,  90,  30,
+    30, 60, 30,
+    67, 60, 30,
+    30, 90, 30,
+    30, 90, 30,
+    67, 60, 30,
+    67, 90, 30,
 
     // top
-      0,   0,   0,
-    100,   0,   0,
-    100,   0,  30,
-      0,   0,   0,
-    100,   0,  30,
-      0,   0,  30,
+    0, 0, 0,
+    100, 0, 0,
+    100, 0, 30,
+    0, 0, 0,
+    100, 0, 30,
+    0, 0, 30,
 
     // top rung front
-    100,   0,   0,
-    100,  30,   0,
-    100,  30,  30,
-    100,   0,   0,
-    100,  30,  30,
-    100,   0,  30,
+    100, 0, 0,
+    100, 30, 0,
+    100, 30, 30,
+    100, 0, 0,
+    100, 30, 30,
+    100, 0, 30,
 
     // under top rung
-    30,   30,   0,
-    30,   30,  30,
-    100,  30,  30,
-    30,   30,   0,
-    100,  30,  30,
-    100,  30,   0,
+    30, 30, 0,
+    30, 30, 30,
+    100, 30, 30,
+    30, 30, 0,
+    100, 30, 30,
+    100, 30, 0,
 
     // between top rung and middle
-    30,   30,   0,
-    30,   60,  30,
-    30,   30,  30,
-    30,   30,   0,
-    30,   60,   0,
-    30,   60,  30,
+    30, 30, 0,
+    30, 60, 30,
+    30, 30, 30,
+    30, 30, 0,
+    30, 60, 0,
+    30, 60, 30,
 
     // top of middle rung
-    30,   60,   0,
-    67,   60,  30,
-    30,   60,  30,
-    30,   60,   0,
-    67,   60,   0,
-    67,   60,  30,
+    30, 60, 0,
+    67, 60, 30,
+    30, 60, 30,
+    30, 60, 0,
+    67, 60, 0,
+    67, 60, 30,
 
     // front of middle rung
-    67,   60,   0,
-    67,   90,  30,
-    67,   60,  30,
-    67,   60,   0,
-    67,   90,   0,
-    67,   90,  30,
+    67, 60, 0,
+    67, 90, 30,
+    67, 60, 30,
+    67, 60, 0,
+    67, 90, 0,
+    67, 90, 30,
 
     // bottom of middle rung.
-    30,   90,   0,
-    30,   90,  30,
-    67,   90,  30,
-    30,   90,   0,
-    67,   90,  30,
-    67,   90,   0,
+    30, 90, 0,
+    30, 90, 30,
+    67, 90, 30,
+    30, 90, 0,
+    67, 90, 30,
+    67, 90, 0,
 
     // front of bottom
-    30,   90,   0,
-    30,  150,  30,
-    30,   90,  30,
-    30,   90,   0,
-    30,  150,   0,
-    30,  150,  30,
+    30, 90, 0,
+    30, 150, 30,
+    30, 90, 30,
+    30, 90, 0,
+    30, 150, 0,
+    30, 150, 30,
 
     // bottom
-    0,   150,   0,
-    0,   150,  30,
-    30,  150,  30,
-    0,   150,   0,
-    30,  150,  30,
-    30,  150,   0,
+    0, 150, 0,
+    0, 150, 30,
+    30, 150, 30,
+    0, 150, 0,
+    30, 150, 30,
+    30, 150, 0,
 
     // left side
-    0,   0,   0,
-    0,   0,  30,
-    0, 150,  30,
-    0,   0,   0,
-    0, 150,  30,
-    0, 150,   0,
+    0, 0, 0,
+    0, 0, 30,
+    0, 150, 30,
+    0, 0, 0,
+    0, 150, 30,
+    0, 150, 0,
   ];
 
   const texcoords = [
@@ -3901,52 +3917,52 @@ function create3DFVertices() {
   ]);
 
   const colors = expandRLEData([
-        // left column front
-        // top rung front
-        // middle rung front
-      18, 200,  70, 120,
+    // left column front
+    // top rung front
+    // middle rung front
+    18, 200, 70, 120,
 
-        // left column back
-        // top rung back
-        // middle rung back
-      18, 80, 70, 200,
+    // left column back
+    // top rung back
+    // middle rung back
+    18, 80, 70, 200,
 
-        // top
-      6, 70, 200, 210,
+    // top
+    6, 70, 200, 210,
 
-        // top rung front
-      6, 200, 200, 70,
+    // top rung front
+    6, 200, 200, 70,
 
-        // under top rung
-      6, 210, 100, 70,
+    // under top rung
+    6, 210, 100, 70,
 
-        // between top rung and middle
-      6, 210, 160, 70,
+    // between top rung and middle
+    6, 210, 160, 70,
 
-        // top of middle rung
-      6, 70, 180, 210,
+    // top of middle rung
+    6, 70, 180, 210,
 
-        // front of middle rung
-      6, 100, 70, 210,
+    // front of middle rung
+    6, 100, 70, 210,
 
-        // bottom of middle rung.
-      6, 76, 210, 100,
+    // bottom of middle rung.
+    6, 76, 210, 100,
 
-        // front of bottom
-      6, 140, 210, 80,
+    // front of bottom
+    6, 140, 210, 80,
 
-        // bottom
-      6, 90, 130, 110,
+    // bottom
+    6, 90, 130, 110,
 
-        // left side
-      6, 160, 160, 220,
+    // left side
+    6, 160, 160, 220,
   ], [255]);
 
   const numVerts = positions.length / 3;
 
   const arrays = {
     position: createAugmentedTypedArray(3, numVerts),
-    texcoord: createAugmentedTypedArray(2,  numVerts),
+    texcoord: createAugmentedTypedArray(2, numVerts),
     normal: createAugmentedTypedArray(3, numVerts),
     color: createAugmentedTypedArray(4, numVerts, Uint8Array),
     indices: createAugmentedTypedArray(3, numVerts / 3, Uint16Array),
@@ -4056,28 +4072,28 @@ function create3DFVertices() {
  * @return {Object.<string, TypedArray>} The created vertices.
  * @memberOf module:twgl/primitives
  */
- function createCrescentVertices(
-    verticalRadius,
-    outerRadius,
-    innerRadius,
-    thickness,
-    subdivisionsDown,
-    startOffset,
-    endOffset) {
+function createCrescentVertices(
+  verticalRadius,
+  outerRadius,
+  innerRadius,
+  thickness,
+  subdivisionsDown,
+  startOffset,
+  endOffset) {
   if (subdivisionsDown <= 0) {
     throw new Error('subdivisionDown must be > 0');
   }
 
   startOffset = startOffset || 0;
-  endOffset   = endOffset || 1;
+  endOffset = endOffset || 1;
 
   const subdivisionsThick = 2;
 
   const offsetRange = endOffset - startOffset;
   const numVertices = (subdivisionsDown + 1) * 2 * (2 + subdivisionsThick);
-  const positions   = createAugmentedTypedArray(3, numVertices);
-  const normals     = createAugmentedTypedArray(3, numVertices);
-  const texcoords   = createAugmentedTypedArray(2, numVertices);
+  const positions = createAugmentedTypedArray(3, numVertices);
+  const normals = createAugmentedTypedArray(3, numVertices);
+  const texcoords = createAugmentedTypedArray(2, numVertices);
 
   function lerp(a, b, s) {
     return a + (b - a) * s;
@@ -4105,9 +4121,9 @@ function create3DFVertices() {
   // Generate the individual vertices in our vertex buffer.
   for (let x = 0; x < subdivisionsThick; x++) {
     const uBack = (x / (subdivisionsThick - 1) - 0.5) * 2;
-    createArc(outerRadius, x, [1, 1, 1], [0,     0, 0], 1, 0);
+    createArc(outerRadius, x, [1, 1, 1], [0, 0, 0], 1, 0);
     createArc(outerRadius, x, [0, 0, 0], [uBack, 0, 0], 0, 0);
-    createArc(innerRadius, x, [1, 1, 1], [0,     0, 0], 1, 0);
+    createArc(innerRadius, x, [1, 1, 1], [0, 0, 0], 1, 0);
     createArc(innerRadius, x, [0, 0, 0], [uBack, 0, 0], 0, 1);
   }
 
@@ -4118,15 +4134,15 @@ function create3DFVertices() {
     for (let z = 0; z < subdivisionsDown; ++z) {
       // Make triangle 1 of quad.
       indices.push(
-          leftArcOffset + z + 0,
-          leftArcOffset + z + 1,
-          rightArcOffset + z + 0);
+        leftArcOffset + z + 0,
+        leftArcOffset + z + 1,
+        rightArcOffset + z + 0);
 
       // Make triangle 2 of quad.
       indices.push(
-          leftArcOffset + z + 1,
-          rightArcOffset + z + 1,
-          rightArcOffset + z + 0);
+        leftArcOffset + z + 1,
+        rightArcOffset + z + 1,
+        rightArcOffset + z + 0);
     }
   }
 
@@ -4142,9 +4158,9 @@ function create3DFVertices() {
 
   return {
     position: positions,
-    normal:   normals,
+    normal: normals,
     texcoord: texcoords,
-    indices:  indices,
+    indices: indices,
   };
 }
 
@@ -4164,50 +4180,50 @@ function create3DFVertices() {
  * @function createCylinderBufferInfo
  */
 
- /**
-  * Creates cylinder buffers. The cylinder will be created around the origin
-  * along the y-axis.
-  *
-  * @param {WebGLRenderingContext} gl The WebGLRenderingContext.
-  * @param {number} radius Radius of cylinder.
-  * @param {number} height Height of cylinder.
-  * @param {number} radialSubdivisions The number of subdivisions around the cylinder.
-  * @param {number} verticalSubdivisions The number of subdivisions down the cylinder.
-  * @param {boolean} [topCap] Create top cap. Default = true.
-  * @param {boolean} [bottomCap] Create bottom cap. Default = true.
-  * @return {Object.<string, WebGLBuffer>} The created buffers.
-  * @memberOf module:twgl/primitives
-  * @function createCylinderBuffers
-  */
+/**
+ * Creates cylinder buffers. The cylinder will be created around the origin
+ * along the y-axis.
+ *
+ * @param {WebGLRenderingContext} gl The WebGLRenderingContext.
+ * @param {number} radius Radius of cylinder.
+ * @param {number} height Height of cylinder.
+ * @param {number} radialSubdivisions The number of subdivisions around the cylinder.
+ * @param {number} verticalSubdivisions The number of subdivisions down the cylinder.
+ * @param {boolean} [topCap] Create top cap. Default = true.
+ * @param {boolean} [bottomCap] Create bottom cap. Default = true.
+ * @return {Object.<string, WebGLBuffer>} The created buffers.
+ * @memberOf module:twgl/primitives
+ * @function createCylinderBuffers
+ */
 
- /**
-  * Creates cylinder vertices. The cylinder will be created around the origin
-  * along the y-axis.
-  *
-  * @param {number} radius Radius of cylinder.
-  * @param {number} height Height of cylinder.
-  * @param {number} radialSubdivisions The number of subdivisions around the cylinder.
-  * @param {number} verticalSubdivisions The number of subdivisions down the cylinder.
-  * @param {boolean} [topCap] Create top cap. Default = true.
-  * @param {boolean} [bottomCap] Create bottom cap. Default = true.
-  * @return {Object.<string, TypedArray>} The created vertices.
-  * @memberOf module:twgl/primitives
-  */
+/**
+ * Creates cylinder vertices. The cylinder will be created around the origin
+ * along the y-axis.
+ *
+ * @param {number} radius Radius of cylinder.
+ * @param {number} height Height of cylinder.
+ * @param {number} radialSubdivisions The number of subdivisions around the cylinder.
+ * @param {number} verticalSubdivisions The number of subdivisions down the cylinder.
+ * @param {boolean} [topCap] Create top cap. Default = true.
+ * @param {boolean} [bottomCap] Create bottom cap. Default = true.
+ * @return {Object.<string, TypedArray>} The created vertices.
+ * @memberOf module:twgl/primitives
+ */
 function createCylinderVertices(
+  radius,
+  height,
+  radialSubdivisions,
+  verticalSubdivisions,
+  topCap,
+  bottomCap) {
+  return createTruncatedConeVertices(
+    radius,
     radius,
     height,
     radialSubdivisions,
     verticalSubdivisions,
     topCap,
-    bottomCap) {
-  return createTruncatedConeVertices(
-      radius,
-      radius,
-      height,
-      radialSubdivisions,
-      verticalSubdivisions,
-      topCap,
-      bottomCap);
+    bottomCap);
 }
 
 /**
@@ -4253,12 +4269,12 @@ function createCylinderVertices(
  * @memberOf module:twgl/primitives
  */
 function createTorusVertices(
-    radius,
-    thickness,
-    radialSubdivisions,
-    bodySubdivisions,
-    startAngle,
-    endAngle) {
+  radius,
+  thickness,
+  radialSubdivisions,
+  bodySubdivisions,
+  startAngle,
+  endAngle) {
   if (radialSubdivisions < 3) {
     throw new Error('radialSubdivisions must be 3 or greater');
   }
@@ -4272,12 +4288,12 @@ function createTorusVertices(
   const range = endAngle - startAngle;
 
   const radialParts = radialSubdivisions + 1;
-  const bodyParts   = bodySubdivisions + 1;
+  const bodyParts = bodySubdivisions + 1;
   const numVertices = radialParts * bodyParts;
-  const positions   = createAugmentedTypedArray(3, numVertices);
-  const normals     = createAugmentedTypedArray(3, numVertices);
-  const texcoords   = createAugmentedTypedArray(2, numVertices);
-  const indices     = createAugmentedTypedArray(3, (radialSubdivisions) * (bodySubdivisions) * 2, Uint16Array);
+  const positions = createAugmentedTypedArray(3, numVertices);
+  const normals = createAugmentedTypedArray(3, numVertices);
+  const texcoords = createAugmentedTypedArray(2, numVertices);
+  const indices = createAugmentedTypedArray(3, (radialSubdivisions) * (bodySubdivisions) * 2, Uint16Array);
 
   for (let slice = 0; slice < bodyParts; ++slice) {
     const v = slice / bodySubdivisions;
@@ -4303,22 +4319,22 @@ function createTorusVertices(
 
   for (let slice = 0; slice < bodySubdivisions; ++slice) {  // eslint-disable-line
     for (let ring = 0; ring < radialSubdivisions; ++ring) {  // eslint-disable-line
-      const nextRingIndex  = 1 + ring;
+      const nextRingIndex = 1 + ring;
       const nextSliceIndex = 1 + slice;
-      indices.push(radialParts * slice          + ring,
-                   radialParts * nextSliceIndex + ring,
-                   radialParts * slice          + nextRingIndex);
+      indices.push(radialParts * slice + ring,
+        radialParts * nextSliceIndex + ring,
+        radialParts * slice + nextRingIndex);
       indices.push(radialParts * nextSliceIndex + ring,
-                   radialParts * nextSliceIndex + nextRingIndex,
-                   radialParts * slice          + nextRingIndex);
+        radialParts * nextSliceIndex + nextRingIndex,
+        radialParts * slice + nextRingIndex);
     }
   }
 
   return {
     position: positions,
-    normal:   normals,
+    normal: normals,
     texcoord: texcoords,
-    indices:  indices,
+    indices: indices,
   };
 }
 
@@ -4405,11 +4421,11 @@ function createTorusVertices(
  * @memberOf module:twgl/primitives
  */
 function createDiscVertices(
-    radius,
-    divisions,
-    stacks,
-    innerRadius,
-    stackPower) {
+  radius,
+  divisions,
+  stacks,
+  innerRadius,
+  stackPower) {
   if (divisions < 3) {
     throw new Error('divisions must be at least 3');
   }
@@ -4423,9 +4439,9 @@ function createDiscVertices(
   const numVertices = (divisions + 1) * (stacks + 1);
 
   const positions = createAugmentedTypedArray(3, numVertices);
-  const normals   = createAugmentedTypedArray(3, numVertices);
+  const normals = createAugmentedTypedArray(3, numVertices);
   const texcoords = createAugmentedTypedArray(2, numVertices);
-  const indices   = createAugmentedTypedArray(3, stacks * divisions * 2, Uint16Array);
+  const indices = createAugmentedTypedArray(3, stacks * divisions * 2, Uint16Array);
 
   let firstIndex = 0;
   const radiusSpan = radius - innerRadius;
@@ -4509,7 +4525,7 @@ function makeRandomVertexColors(vertices, options) {
   options = options || {};
   const numElements = vertices.position.numElements;
   const vColors = createAugmentedTypedArray(4, numElements, Uint8Array);
-  const rand = options.rand || function(ndx, channel) {
+  const rand = options.rand || function (ndx, channel) {
     return channel < 3 ? randInt(256) : 255;
   };
   vertices.color = vColors;
@@ -4538,7 +4554,7 @@ function makeRandomVertexColors(vertices, options) {
  * @private
  */
 function createBufferFunc(fn) {
-  return function(gl) {
+  return function (gl) {
     const arrays = fn.apply(this, Array.prototype.slice.call(arguments, 1));
     return createBuffersFromArrays(gl, arrays);
   };
@@ -4550,8 +4566,8 @@ function createBufferFunc(fn) {
  * @private
  */
 function createBufferInfoFunc(fn) {
-  return function(gl) {
-    const arrays = fn.apply(null,  Array.prototype.slice.call(arguments, 1));
+  return function (gl) {
+    const arrays = fn.apply(null, Array.prototype.slice.call(arguments, 1));
     return createBufferInfoFromArrays(gl, arrays);
   };
 }
@@ -4643,7 +4659,7 @@ function concatVertices(arrayOfArrays) {
   // and numElements for each set of vertices
   for (let ii = 0; ii < arrayOfArrays.length; ++ii) {
     const arrays = arrayOfArrays[ii];
-    Object.keys(arrays).forEach(function(name) {  // eslint-disable-line
+    Object.keys(arrays).forEach(function (name) {  // eslint-disable-line
       if (!names[name]) {
         names[name] = [];
       }
@@ -4698,7 +4714,7 @@ function concatVertices(arrayOfArrays) {
   const base = names[baseName];
 
   const newArrays = {};
-  Object.keys(names).forEach(function(name) {
+  Object.keys(names).forEach(function (name) {
     const info = getLengthOfCombinedArrays(name);
     const newArraySpec = createArrayOfSameType(info.spec, info.length);
     copyArraysToNewArray(name, base, getArray$1(newArraySpec));
@@ -4719,7 +4735,7 @@ function concatVertices(arrayOfArrays) {
  */
 function duplicateVertices(arrays) {
   const newArrays = {};
-  Object.keys(arrays).forEach(function(name) {
+  Object.keys(arrays).forEach(function (name) {
     const arraySpec = arrays[name];
     const srcArray = getArray$1(arraySpec);
     const newArraySpec = createArrayOfSameType(arraySpec, srcArray.length);
@@ -4911,7 +4927,7 @@ function isWebGL1(gl) {
  * @memberOf module:twgl
  * @function glEnumToString
  */
-const glEnumToString = (function() {
+const glEnumToString = (function () {
   const haveEnumsForType = {};
   const enums = {};
 
@@ -4970,13 +4986,13 @@ const defaults$1 = {
 const isArrayBuffer$1 = isArrayBuffer;
 
 // Should we make this on demand?
-const getShared2DContext = function() {
+const getShared2DContext = function () {
   let s_ctx;
   return function getShared2DContext() {
     s_ctx = s_ctx ||
-        ((typeof document !== 'undefined' && document.createElement)
-          ? document.createElement("canvas").getContext("2d")
-          : null);
+      ((typeof document !== 'undefined' && document.createElement)
+        ? document.createElement("canvas").getContext("2d")
+        : null);
     return s_ctx;
   };
 }();
@@ -4994,22 +5010,22 @@ const getShared2DContext = function() {
 // as of 2018-01-02
 
 /* PixelFormat */
-const ALPHA                          = 0x1906;
-const RGB                            = 0x1907;
-const RGBA                           = 0x1908;
-const LUMINANCE                      = 0x1909;
-const LUMINANCE_ALPHA                = 0x190A;
-const DEPTH_COMPONENT                = 0x1902;
-const DEPTH_STENCIL                  = 0x84F9;
+const ALPHA = 0x1906;
+const RGB = 0x1907;
+const RGBA = 0x1908;
+const LUMINANCE = 0x1909;
+const LUMINANCE_ALPHA = 0x190A;
+const DEPTH_COMPONENT = 0x1902;
+const DEPTH_STENCIL = 0x84F9;
 
 /* TextureWrapMode */
 // const REPEAT                         = 0x2901;
 // const MIRRORED_REPEAT                = 0x8370;
-const CLAMP_TO_EDGE                  = 0x812f;
+const CLAMP_TO_EDGE = 0x812f;
 
 /* TextureMagFilter */
-const NEAREST                        = 0x2600;
-const LINEAR                         = 0x2601;
+const NEAREST = 0x2600;
+const LINEAR = 0x2601;
 
 /* TextureMinFilter */
 // const NEAREST_MIPMAP_NEAREST         = 0x2700;
@@ -5018,144 +5034,144 @@ const LINEAR                         = 0x2601;
 // const LINEAR_MIPMAP_LINEAR           = 0x2703;
 
 /* Texture Target */
-const TEXTURE_2D                     = 0x0de1;
-const TEXTURE_CUBE_MAP               = 0x8513;
-const TEXTURE_3D                     = 0x806f;
-const TEXTURE_2D_ARRAY               = 0x8c1a;
+const TEXTURE_2D = 0x0de1;
+const TEXTURE_CUBE_MAP = 0x8513;
+const TEXTURE_3D = 0x806f;
+const TEXTURE_2D_ARRAY = 0x8c1a;
 
 /* Cubemap Targets */
-const TEXTURE_CUBE_MAP_POSITIVE_X    = 0x8515;
-const TEXTURE_CUBE_MAP_NEGATIVE_X    = 0x8516;
-const TEXTURE_CUBE_MAP_POSITIVE_Y    = 0x8517;
-const TEXTURE_CUBE_MAP_NEGATIVE_Y    = 0x8518;
-const TEXTURE_CUBE_MAP_POSITIVE_Z    = 0x8519;
-const TEXTURE_CUBE_MAP_NEGATIVE_Z    = 0x851a;
+const TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515;
+const TEXTURE_CUBE_MAP_NEGATIVE_X = 0x8516;
+const TEXTURE_CUBE_MAP_POSITIVE_Y = 0x8517;
+const TEXTURE_CUBE_MAP_NEGATIVE_Y = 0x8518;
+const TEXTURE_CUBE_MAP_POSITIVE_Z = 0x8519;
+const TEXTURE_CUBE_MAP_NEGATIVE_Z = 0x851a;
 
 /* Texture Parameters */
-const TEXTURE_MIN_FILTER             = 0x2801;
-const TEXTURE_MAG_FILTER             = 0x2800;
-const TEXTURE_WRAP_S                 = 0x2802;
-const TEXTURE_WRAP_T                 = 0x2803;
-const TEXTURE_WRAP_R                 = 0x8072;
-const TEXTURE_MIN_LOD                = 0x813a;
-const TEXTURE_MAX_LOD                = 0x813b;
-const TEXTURE_BASE_LEVEL             = 0x813c;
-const TEXTURE_MAX_LEVEL              = 0x813d;
+const TEXTURE_MIN_FILTER = 0x2801;
+const TEXTURE_MAG_FILTER = 0x2800;
+const TEXTURE_WRAP_S = 0x2802;
+const TEXTURE_WRAP_T = 0x2803;
+const TEXTURE_WRAP_R = 0x8072;
+const TEXTURE_MIN_LOD = 0x813a;
+const TEXTURE_MAX_LOD = 0x813b;
+const TEXTURE_BASE_LEVEL = 0x813c;
+const TEXTURE_MAX_LEVEL = 0x813d;
 
 
 /* Pixel store */
-const UNPACK_ALIGNMENT                   = 0x0cf5;
-const UNPACK_ROW_LENGTH                  = 0x0cf2;
-const UNPACK_IMAGE_HEIGHT                = 0x806e;
-const UNPACK_SKIP_PIXELS                 = 0x0cf4;
-const UNPACK_SKIP_ROWS                   = 0x0cf3;
-const UNPACK_SKIP_IMAGES                 = 0x806d;
+const UNPACK_ALIGNMENT = 0x0cf5;
+const UNPACK_ROW_LENGTH = 0x0cf2;
+const UNPACK_IMAGE_HEIGHT = 0x806e;
+const UNPACK_SKIP_PIXELS = 0x0cf4;
+const UNPACK_SKIP_ROWS = 0x0cf3;
+const UNPACK_SKIP_IMAGES = 0x806d;
 const UNPACK_COLORSPACE_CONVERSION_WEBGL = 0x9243;
-const UNPACK_PREMULTIPLY_ALPHA_WEBGL     = 0x9241;
-const UNPACK_FLIP_Y_WEBGL                = 0x9240;
+const UNPACK_PREMULTIPLY_ALPHA_WEBGL = 0x9241;
+const UNPACK_FLIP_Y_WEBGL = 0x9240;
 
-const R8                           = 0x8229;
-const R8_SNORM                     = 0x8F94;
-const R16F                         = 0x822D;
-const R32F                         = 0x822E;
-const R8UI                         = 0x8232;
-const R8I                          = 0x8231;
-const RG16UI                       = 0x823A;
-const RG16I                        = 0x8239;
-const RG32UI                       = 0x823C;
-const RG32I                        = 0x823B;
-const RG8                          = 0x822B;
-const RG8_SNORM                    = 0x8F95;
-const RG16F                        = 0x822F;
-const RG32F                        = 0x8230;
-const RG8UI                        = 0x8238;
-const RG8I                         = 0x8237;
-const R16UI                        = 0x8234;
-const R16I                         = 0x8233;
-const R32UI                        = 0x8236;
-const R32I                         = 0x8235;
-const RGB8                         = 0x8051;
-const SRGB8                        = 0x8C41;
-const RGB565                       = 0x8D62;
-const RGB8_SNORM                   = 0x8F96;
-const R11F_G11F_B10F               = 0x8C3A;
-const RGB9_E5                      = 0x8C3D;
-const RGB16F                       = 0x881B;
-const RGB32F                       = 0x8815;
-const RGB8UI                       = 0x8D7D;
-const RGB8I                        = 0x8D8F;
-const RGB16UI                      = 0x8D77;
-const RGB16I                       = 0x8D89;
-const RGB32UI                      = 0x8D71;
-const RGB32I                       = 0x8D83;
-const RGBA8                        = 0x8058;
-const SRGB8_ALPHA8                 = 0x8C43;
-const RGBA8_SNORM                  = 0x8F97;
-const RGB5_A1                      = 0x8057;
-const RGBA4                        = 0x8056;
-const RGB10_A2                     = 0x8059;
-const RGBA16F                      = 0x881A;
-const RGBA32F                      = 0x8814;
-const RGBA8UI                      = 0x8D7C;
-const RGBA8I                       = 0x8D8E;
-const RGB10_A2UI                   = 0x906F;
-const RGBA16UI                     = 0x8D76;
-const RGBA16I                      = 0x8D88;
-const RGBA32I                      = 0x8D82;
-const RGBA32UI                     = 0x8D70;
+const R8 = 0x8229;
+const R8_SNORM = 0x8F94;
+const R16F = 0x822D;
+const R32F = 0x822E;
+const R8UI = 0x8232;
+const R8I = 0x8231;
+const RG16UI = 0x823A;
+const RG16I = 0x8239;
+const RG32UI = 0x823C;
+const RG32I = 0x823B;
+const RG8 = 0x822B;
+const RG8_SNORM = 0x8F95;
+const RG16F = 0x822F;
+const RG32F = 0x8230;
+const RG8UI = 0x8238;
+const RG8I = 0x8237;
+const R16UI = 0x8234;
+const R16I = 0x8233;
+const R32UI = 0x8236;
+const R32I = 0x8235;
+const RGB8 = 0x8051;
+const SRGB8 = 0x8C41;
+const RGB565 = 0x8D62;
+const RGB8_SNORM = 0x8F96;
+const R11F_G11F_B10F = 0x8C3A;
+const RGB9_E5 = 0x8C3D;
+const RGB16F = 0x881B;
+const RGB32F = 0x8815;
+const RGB8UI = 0x8D7D;
+const RGB8I = 0x8D8F;
+const RGB16UI = 0x8D77;
+const RGB16I = 0x8D89;
+const RGB32UI = 0x8D71;
+const RGB32I = 0x8D83;
+const RGBA8 = 0x8058;
+const SRGB8_ALPHA8 = 0x8C43;
+const RGBA8_SNORM = 0x8F97;
+const RGB5_A1 = 0x8057;
+const RGBA4 = 0x8056;
+const RGB10_A2 = 0x8059;
+const RGBA16F = 0x881A;
+const RGBA32F = 0x8814;
+const RGBA8UI = 0x8D7C;
+const RGBA8I = 0x8D8E;
+const RGB10_A2UI = 0x906F;
+const RGBA16UI = 0x8D76;
+const RGBA16I = 0x8D88;
+const RGBA32I = 0x8D82;
+const RGBA32UI = 0x8D70;
 
-const DEPTH_COMPONENT16            = 0x81A5;
-const DEPTH_COMPONENT24            = 0x81A6;
-const DEPTH_COMPONENT32F           = 0x8CAC;
-const DEPTH32F_STENCIL8            = 0x8CAD;
-const DEPTH24_STENCIL8             = 0x88F0;
+const DEPTH_COMPONENT16 = 0x81A5;
+const DEPTH_COMPONENT24 = 0x81A6;
+const DEPTH_COMPONENT32F = 0x8CAC;
+const DEPTH32F_STENCIL8 = 0x8CAD;
+const DEPTH24_STENCIL8 = 0x88F0;
 
 /* DataType */
-const BYTE$2                         = 0x1400;
-const UNSIGNED_BYTE$2                = 0x1401;
-const SHORT$2                        = 0x1402;
-const UNSIGNED_SHORT$2               = 0x1403;
-const INT$2                          = 0x1404;
-const UNSIGNED_INT$2                 = 0x1405;
-const FLOAT$2                        = 0x1406;
-const UNSIGNED_SHORT_4_4_4_4$1       = 0x8033;
-const UNSIGNED_SHORT_5_5_5_1$1       = 0x8034;
-const UNSIGNED_SHORT_5_6_5$1         = 0x8363;
-const HALF_FLOAT$1                   = 0x140B;
-const HALF_FLOAT_OES               = 0x8D61;  // Thanks Khronos for making this different >:(
-const UNSIGNED_INT_2_10_10_10_REV$1  = 0x8368;
+const BYTE$2 = 0x1400;
+const UNSIGNED_BYTE$2 = 0x1401;
+const SHORT$2 = 0x1402;
+const UNSIGNED_SHORT$2 = 0x1403;
+const INT$2 = 0x1404;
+const UNSIGNED_INT$2 = 0x1405;
+const FLOAT$2 = 0x1406;
+const UNSIGNED_SHORT_4_4_4_4$1 = 0x8033;
+const UNSIGNED_SHORT_5_5_5_1$1 = 0x8034;
+const UNSIGNED_SHORT_5_6_5$1 = 0x8363;
+const HALF_FLOAT$1 = 0x140B;
+const HALF_FLOAT_OES = 0x8D61;  // Thanks Khronos for making this different >:(
+const UNSIGNED_INT_2_10_10_10_REV$1 = 0x8368;
 const UNSIGNED_INT_10F_11F_11F_REV$1 = 0x8C3B;
-const UNSIGNED_INT_5_9_9_9_REV$1     = 0x8C3E;
+const UNSIGNED_INT_5_9_9_9_REV$1 = 0x8C3E;
 const FLOAT_32_UNSIGNED_INT_24_8_REV$1 = 0x8DAD;
-const UNSIGNED_INT_24_8$1            = 0x84FA;
+const UNSIGNED_INT_24_8$1 = 0x84FA;
 
-const RG                           = 0x8227;
-const RG_INTEGER                   = 0x8228;
-const RED                          = 0x1903;
-const RED_INTEGER                  = 0x8D94;
-const RGB_INTEGER                  = 0x8D98;
-const RGBA_INTEGER                 = 0x8D99;
+const RG = 0x8227;
+const RG_INTEGER = 0x8228;
+const RED = 0x1903;
+const RED_INTEGER = 0x8D94;
+const RGB_INTEGER = 0x8D98;
+const RGBA_INTEGER = 0x8D99;
 
 const formatInfo = {};
 {
   // NOTE: this is named `numColorComponents` vs `numComponents` so we can let Uglify mangle
   // the name.
   const f = formatInfo;
-  f[ALPHA]           = { numColorComponents: 1, };
-  f[LUMINANCE]       = { numColorComponents: 1, };
+  f[ALPHA] = { numColorComponents: 1, };
+  f[LUMINANCE] = { numColorComponents: 1, };
   f[LUMINANCE_ALPHA] = { numColorComponents: 2, };
-  f[RGB]             = { numColorComponents: 3, };
-  f[RGBA]            = { numColorComponents: 4, };
-  f[RED]             = { numColorComponents: 1, };
-  f[RED_INTEGER]     = { numColorComponents: 1, };
-  f[RG]              = { numColorComponents: 2, };
-  f[RG_INTEGER]      = { numColorComponents: 2, };
-  f[RGB]             = { numColorComponents: 3, };
-  f[RGB_INTEGER]     = { numColorComponents: 3, };
-  f[RGBA]            = { numColorComponents: 4, };
-  f[RGBA_INTEGER]    = { numColorComponents: 4, };
+  f[RGB] = { numColorComponents: 3, };
+  f[RGBA] = { numColorComponents: 4, };
+  f[RED] = { numColorComponents: 1, };
+  f[RED_INTEGER] = { numColorComponents: 1, };
+  f[RG] = { numColorComponents: 2, };
+  f[RG_INTEGER] = { numColorComponents: 2, };
+  f[RGB] = { numColorComponents: 3, };
+  f[RGB_INTEGER] = { numColorComponents: 3, };
+  f[RGBA] = { numColorComponents: 4, };
+  f[RGBA_INTEGER] = { numColorComponents: 4, };
   f[DEPTH_COMPONENT] = { numColorComponents: 1, };
-  f[DEPTH_STENCIL]   = { numColorComponents: 2, };
+  f[DEPTH_STENCIL] = { numColorComponents: 2, };
 }
 
 /**
@@ -5174,74 +5190,74 @@ function getTextureInternalFormatInfo(internalFormat) {
     // NOTE: these properties need unique names so we can let Uglify mangle the name.
     const t = {};
     // unsized formats
-    t[ALPHA]              = { textureFormat: ALPHA,           colorRenderable: true,  textureFilterable: true,  bytesPerElement: [1, 2, 2, 4],        type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
-    t[LUMINANCE]          = { textureFormat: LUMINANCE,       colorRenderable: true,  textureFilterable: true,  bytesPerElement: [1, 2, 2, 4],        type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
-    t[LUMINANCE_ALPHA]    = { textureFormat: LUMINANCE_ALPHA, colorRenderable: true,  textureFilterable: true,  bytesPerElement: [2, 4, 4, 8],        type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
-    t[RGB]                = { textureFormat: RGB,             colorRenderable: true,  textureFilterable: true,  bytesPerElement: [3, 6, 6, 12, 2],    type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2, UNSIGNED_SHORT_5_6_5$1], };
-    t[RGBA]               = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4, 8, 8, 16, 2, 2], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2, UNSIGNED_SHORT_4_4_4_4$1, UNSIGNED_SHORT_5_5_5_1$1], };
-    t[DEPTH_COMPONENT]    = { textureFormat: DEPTH_COMPONENT, colorRenderable: true,  textureFilterable: false, bytesPerElement: [2, 4],              type: [UNSIGNED_INT$2, UNSIGNED_SHORT$2], };
+    t[ALPHA] = { textureFormat: ALPHA, colorRenderable: true, textureFilterable: true, bytesPerElement: [1, 2, 2, 4], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
+    t[LUMINANCE] = { textureFormat: LUMINANCE, colorRenderable: true, textureFilterable: true, bytesPerElement: [1, 2, 2, 4], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
+    t[LUMINANCE_ALPHA] = { textureFormat: LUMINANCE_ALPHA, colorRenderable: true, textureFilterable: true, bytesPerElement: [2, 4, 4, 8], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2], };
+    t[RGB] = { textureFormat: RGB, colorRenderable: true, textureFilterable: true, bytesPerElement: [3, 6, 6, 12, 2], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2, UNSIGNED_SHORT_5_6_5$1], };
+    t[RGBA] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4, 8, 8, 16, 2, 2], type: [UNSIGNED_BYTE$2, HALF_FLOAT$1, HALF_FLOAT_OES, FLOAT$2, UNSIGNED_SHORT_4_4_4_4$1, UNSIGNED_SHORT_5_5_5_1$1], };
+    t[DEPTH_COMPONENT] = { textureFormat: DEPTH_COMPONENT, colorRenderable: true, textureFilterable: false, bytesPerElement: [2, 4], type: [UNSIGNED_INT$2, UNSIGNED_SHORT$2], };
 
     // sized formats
-    t[R8]                 = { textureFormat: RED,             colorRenderable: true,  textureFilterable: true,  bytesPerElement: [1],        type: [UNSIGNED_BYTE$2], };
-    t[R8_SNORM]           = { textureFormat: RED,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [1],        type: [BYTE$2], };
-    t[R16F]               = { textureFormat: RED,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [4, 2],     type: [FLOAT$2, HALF_FLOAT$1], };
-    t[R32F]               = { textureFormat: RED,             colorRenderable: false, textureFilterable: false, bytesPerElement: [4],        type: [FLOAT$2], };
-    t[R8UI]               = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [1],        type: [UNSIGNED_BYTE$2], };
-    t[R8I]                = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [1],        type: [BYTE$2], };
-    t[R16UI]              = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [2],        type: [UNSIGNED_SHORT$2], };
-    t[R16I]               = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [2],        type: [SHORT$2], };
-    t[R32UI]              = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_INT$2], };
-    t[R32I]               = { textureFormat: RED_INTEGER,     colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [INT$2], };
-    t[RG8]                = { textureFormat: RG,              colorRenderable: true,  textureFilterable: true,  bytesPerElement: [2],        type: [UNSIGNED_BYTE$2], };
-    t[RG8_SNORM]          = { textureFormat: RG,              colorRenderable: false, textureFilterable: true,  bytesPerElement: [2],        type: [BYTE$2], };
-    t[RG16F]              = { textureFormat: RG,              colorRenderable: false, textureFilterable: true,  bytesPerElement: [8, 4],     type: [FLOAT$2, HALF_FLOAT$1], };
-    t[RG32F]              = { textureFormat: RG,              colorRenderable: false, textureFilterable: false, bytesPerElement: [8],        type: [FLOAT$2], };
-    t[RG8UI]              = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [2],        type: [UNSIGNED_BYTE$2], };
-    t[RG8I]               = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [2],        type: [BYTE$2], };
-    t[RG16UI]             = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_SHORT$2], };
-    t[RG16I]              = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [SHORT$2], };
-    t[RG32UI]             = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [8],        type: [UNSIGNED_INT$2], };
-    t[RG32I]              = { textureFormat: RG_INTEGER,      colorRenderable: true,  textureFilterable: false, bytesPerElement: [8],        type: [INT$2], };
-    t[RGB8]               = { textureFormat: RGB,             colorRenderable: true,  textureFilterable: true,  bytesPerElement: [3],        type: [UNSIGNED_BYTE$2], };
-    t[SRGB8]              = { textureFormat: RGB,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [3],        type: [UNSIGNED_BYTE$2], };
-    t[RGB565]             = { textureFormat: RGB,             colorRenderable: true,  textureFilterable: true,  bytesPerElement: [3, 2],     type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_5_6_5$1], };
-    t[RGB8_SNORM]         = { textureFormat: RGB,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [3],        type: [BYTE$2], };
-    t[R11F_G11F_B10F]     = { textureFormat: RGB,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [12, 6, 4], type: [FLOAT$2, HALF_FLOAT$1, UNSIGNED_INT_10F_11F_11F_REV$1], };
-    t[RGB9_E5]            = { textureFormat: RGB,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [12, 6, 4], type: [FLOAT$2, HALF_FLOAT$1, UNSIGNED_INT_5_9_9_9_REV$1], };
-    t[RGB16F]             = { textureFormat: RGB,             colorRenderable: false, textureFilterable: true,  bytesPerElement: [12, 6],    type: [FLOAT$2, HALF_FLOAT$1], };
-    t[RGB32F]             = { textureFormat: RGB,             colorRenderable: false, textureFilterable: false, bytesPerElement: [12],       type: [FLOAT$2], };
-    t[RGB8UI]             = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [3],        type: [UNSIGNED_BYTE$2], };
-    t[RGB8I]              = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [3],        type: [BYTE$2], };
-    t[RGB16UI]            = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [6],        type: [UNSIGNED_SHORT$2], };
-    t[RGB16I]             = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [6],        type: [SHORT$2], };
-    t[RGB32UI]            = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [12],       type: [UNSIGNED_INT$2], };
-    t[RGB32I]             = { textureFormat: RGB_INTEGER,     colorRenderable: false, textureFilterable: false, bytesPerElement: [12],       type: [INT$2], };
-    t[RGBA8]              = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4],        type: [UNSIGNED_BYTE$2], };
-    t[SRGB8_ALPHA8]       = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4],        type: [UNSIGNED_BYTE$2], };
-    t[RGBA8_SNORM]        = { textureFormat: RGBA,            colorRenderable: false, textureFilterable: true,  bytesPerElement: [4],        type: [BYTE$2], };
-    t[RGB5_A1]            = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4, 2, 4],  type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_5_5_5_1$1, UNSIGNED_INT_2_10_10_10_REV$1], };
-    t[RGBA4]              = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4, 2],     type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_4_4_4_4$1], };
-    t[RGB10_A2]           = { textureFormat: RGBA,            colorRenderable: true,  textureFilterable: true,  bytesPerElement: [4],        type: [UNSIGNED_INT_2_10_10_10_REV$1], };
-    t[RGBA16F]            = { textureFormat: RGBA,            colorRenderable: false, textureFilterable: true,  bytesPerElement: [16, 8],    type: [FLOAT$2, HALF_FLOAT$1], };
-    t[RGBA32F]            = { textureFormat: RGBA,            colorRenderable: false, textureFilterable: false, bytesPerElement: [16],       type: [FLOAT$2], };
-    t[RGBA8UI]            = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_BYTE$2], };
-    t[RGBA8I]             = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [BYTE$2], };
-    t[RGB10_A2UI]         = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_INT_2_10_10_10_REV$1], };
-    t[RGBA16UI]           = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [8],        type: [UNSIGNED_SHORT$2], };
-    t[RGBA16I]            = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [8],        type: [SHORT$2], };
-    t[RGBA32I]            = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [16],       type: [INT$2], };
-    t[RGBA32UI]           = { textureFormat: RGBA_INTEGER,    colorRenderable: true,  textureFilterable: false, bytesPerElement: [16],       type: [UNSIGNED_INT$2], };
+    t[R8] = { textureFormat: RED, colorRenderable: true, textureFilterable: true, bytesPerElement: [1], type: [UNSIGNED_BYTE$2], };
+    t[R8_SNORM] = { textureFormat: RED, colorRenderable: false, textureFilterable: true, bytesPerElement: [1], type: [BYTE$2], };
+    t[R16F] = { textureFormat: RED, colorRenderable: false, textureFilterable: true, bytesPerElement: [4, 2], type: [FLOAT$2, HALF_FLOAT$1], };
+    t[R32F] = { textureFormat: RED, colorRenderable: false, textureFilterable: false, bytesPerElement: [4], type: [FLOAT$2], };
+    t[R8UI] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [1], type: [UNSIGNED_BYTE$2], };
+    t[R8I] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [1], type: [BYTE$2], };
+    t[R16UI] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [2], type: [UNSIGNED_SHORT$2], };
+    t[R16I] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [2], type: [SHORT$2], };
+    t[R32UI] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_INT$2], };
+    t[R32I] = { textureFormat: RED_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [INT$2], };
+    t[RG8] = { textureFormat: RG, colorRenderable: true, textureFilterable: true, bytesPerElement: [2], type: [UNSIGNED_BYTE$2], };
+    t[RG8_SNORM] = { textureFormat: RG, colorRenderable: false, textureFilterable: true, bytesPerElement: [2], type: [BYTE$2], };
+    t[RG16F] = { textureFormat: RG, colorRenderable: false, textureFilterable: true, bytesPerElement: [8, 4], type: [FLOAT$2, HALF_FLOAT$1], };
+    t[RG32F] = { textureFormat: RG, colorRenderable: false, textureFilterable: false, bytesPerElement: [8], type: [FLOAT$2], };
+    t[RG8UI] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [2], type: [UNSIGNED_BYTE$2], };
+    t[RG8I] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [2], type: [BYTE$2], };
+    t[RG16UI] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_SHORT$2], };
+    t[RG16I] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [SHORT$2], };
+    t[RG32UI] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [8], type: [UNSIGNED_INT$2], };
+    t[RG32I] = { textureFormat: RG_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [8], type: [INT$2], };
+    t[RGB8] = { textureFormat: RGB, colorRenderable: true, textureFilterable: true, bytesPerElement: [3], type: [UNSIGNED_BYTE$2], };
+    t[SRGB8] = { textureFormat: RGB, colorRenderable: false, textureFilterable: true, bytesPerElement: [3], type: [UNSIGNED_BYTE$2], };
+    t[RGB565] = { textureFormat: RGB, colorRenderable: true, textureFilterable: true, bytesPerElement: [3, 2], type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_5_6_5$1], };
+    t[RGB8_SNORM] = { textureFormat: RGB, colorRenderable: false, textureFilterable: true, bytesPerElement: [3], type: [BYTE$2], };
+    t[R11F_G11F_B10F] = { textureFormat: RGB, colorRenderable: false, textureFilterable: true, bytesPerElement: [12, 6, 4], type: [FLOAT$2, HALF_FLOAT$1, UNSIGNED_INT_10F_11F_11F_REV$1], };
+    t[RGB9_E5] = { textureFormat: RGB, colorRenderable: false, textureFilterable: true, bytesPerElement: [12, 6, 4], type: [FLOAT$2, HALF_FLOAT$1, UNSIGNED_INT_5_9_9_9_REV$1], };
+    t[RGB16F] = { textureFormat: RGB, colorRenderable: false, textureFilterable: true, bytesPerElement: [12, 6], type: [FLOAT$2, HALF_FLOAT$1], };
+    t[RGB32F] = { textureFormat: RGB, colorRenderable: false, textureFilterable: false, bytesPerElement: [12], type: [FLOAT$2], };
+    t[RGB8UI] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [3], type: [UNSIGNED_BYTE$2], };
+    t[RGB8I] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [3], type: [BYTE$2], };
+    t[RGB16UI] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [6], type: [UNSIGNED_SHORT$2], };
+    t[RGB16I] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [6], type: [SHORT$2], };
+    t[RGB32UI] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [12], type: [UNSIGNED_INT$2], };
+    t[RGB32I] = { textureFormat: RGB_INTEGER, colorRenderable: false, textureFilterable: false, bytesPerElement: [12], type: [INT$2], };
+    t[RGBA8] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4], type: [UNSIGNED_BYTE$2], };
+    t[SRGB8_ALPHA8] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4], type: [UNSIGNED_BYTE$2], };
+    t[RGBA8_SNORM] = { textureFormat: RGBA, colorRenderable: false, textureFilterable: true, bytesPerElement: [4], type: [BYTE$2], };
+    t[RGB5_A1] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4, 2, 4], type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_5_5_5_1$1, UNSIGNED_INT_2_10_10_10_REV$1], };
+    t[RGBA4] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4, 2], type: [UNSIGNED_BYTE$2, UNSIGNED_SHORT_4_4_4_4$1], };
+    t[RGB10_A2] = { textureFormat: RGBA, colorRenderable: true, textureFilterable: true, bytesPerElement: [4], type: [UNSIGNED_INT_2_10_10_10_REV$1], };
+    t[RGBA16F] = { textureFormat: RGBA, colorRenderable: false, textureFilterable: true, bytesPerElement: [16, 8], type: [FLOAT$2, HALF_FLOAT$1], };
+    t[RGBA32F] = { textureFormat: RGBA, colorRenderable: false, textureFilterable: false, bytesPerElement: [16], type: [FLOAT$2], };
+    t[RGBA8UI] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_BYTE$2], };
+    t[RGBA8I] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [BYTE$2], };
+    t[RGB10_A2UI] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_INT_2_10_10_10_REV$1], };
+    t[RGBA16UI] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [8], type: [UNSIGNED_SHORT$2], };
+    t[RGBA16I] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [8], type: [SHORT$2], };
+    t[RGBA32I] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [16], type: [INT$2], };
+    t[RGBA32UI] = { textureFormat: RGBA_INTEGER, colorRenderable: true, textureFilterable: false, bytesPerElement: [16], type: [UNSIGNED_INT$2], };
     // Sized Internal
-    t[DEPTH_COMPONENT16]  = { textureFormat: DEPTH_COMPONENT, colorRenderable: true,  textureFilterable: false, bytesPerElement: [2, 4],     type: [UNSIGNED_SHORT$2, UNSIGNED_INT$2], };
-    t[DEPTH_COMPONENT24]  = { textureFormat: DEPTH_COMPONENT, colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_INT$2], };
-    t[DEPTH_COMPONENT32F] = { textureFormat: DEPTH_COMPONENT, colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [FLOAT$2], };
-    t[DEPTH24_STENCIL8]   = { textureFormat: DEPTH_STENCIL,   colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [UNSIGNED_INT_24_8$1], };
-    t[DEPTH32F_STENCIL8]  = { textureFormat: DEPTH_STENCIL,   colorRenderable: true,  textureFilterable: false, bytesPerElement: [4],        type: [FLOAT_32_UNSIGNED_INT_24_8_REV$1], };
+    t[DEPTH_COMPONENT16] = { textureFormat: DEPTH_COMPONENT, colorRenderable: true, textureFilterable: false, bytesPerElement: [2, 4], type: [UNSIGNED_SHORT$2, UNSIGNED_INT$2], };
+    t[DEPTH_COMPONENT24] = { textureFormat: DEPTH_COMPONENT, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_INT$2], };
+    t[DEPTH_COMPONENT32F] = { textureFormat: DEPTH_COMPONENT, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [FLOAT$2], };
+    t[DEPTH24_STENCIL8] = { textureFormat: DEPTH_STENCIL, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [UNSIGNED_INT_24_8$1], };
+    t[DEPTH32F_STENCIL8] = { textureFormat: DEPTH_STENCIL, colorRenderable: true, textureFilterable: false, bytesPerElement: [4], type: [FLOAT_32_UNSIGNED_INT_24_8_REV$1], };
 
-    Object.keys(t).forEach(function(internalFormat) {
+    Object.keys(t).forEach(function (internalFormat) {
       const info = t[internalFormat];
       info.bytesPerElementMap = {};
-      info.bytesPerElement.forEach(function(bytesPerElement, ndx) {
+      info.bytesPerElement.forEach(function (bytesPerElement, ndx) {
         const type = info.type[ndx];
         info.bytesPerElementMap[type] = bytesPerElement;
       });
@@ -5694,7 +5710,7 @@ function createSampler(gl, options) {
  */
 function createSamplers(gl, samplerOptions) {
   const samplers = {};
-  Object.keys(samplerOptions).forEach(function(name) {
+  Object.keys(samplerOptions).forEach(function (name) {
     samplers[name] = createSampler(gl, samplerOptions[name]);
   });
   return samplers;
@@ -5761,13 +5777,13 @@ function shouldAutomaticallySetTextureFilteringForSize(options) {
 function getCubeFaceOrder(gl, options) {
   options = options || {};
   return options.cubeFaceOrder || [
-      TEXTURE_CUBE_MAP_POSITIVE_X,
-      TEXTURE_CUBE_MAP_NEGATIVE_X,
-      TEXTURE_CUBE_MAP_POSITIVE_Y,
-      TEXTURE_CUBE_MAP_NEGATIVE_Y,
-      TEXTURE_CUBE_MAP_POSITIVE_Z,
-      TEXTURE_CUBE_MAP_NEGATIVE_Z,
-    ];
+    TEXTURE_CUBE_MAP_POSITIVE_X,
+    TEXTURE_CUBE_MAP_NEGATIVE_X,
+    TEXTURE_CUBE_MAP_POSITIVE_Y,
+    TEXTURE_CUBE_MAP_NEGATIVE_Y,
+    TEXTURE_CUBE_MAP_POSITIVE_Z,
+    TEXTURE_CUBE_MAP_NEGATIVE_Z,
+  ];
 }
 
 /**
@@ -5793,10 +5809,10 @@ function getCubeFaceOrder(gl, options) {
 function getCubeFacesWithNdx(gl, options) {
   const faces = getCubeFaceOrder(gl, options);
   // work around bug in NVidia drivers. We have to upload the first face first else the driver crashes :(
-  const facesWithNdx = faces.map(function(face, ndx) {
+  const facesWithNdx = faces.map(function (face, ndx) {
     return { face: face, ndx: ndx };
   });
-  facesWithNdx.sort(function(a, b) {
+  facesWithNdx.sort(function (a, b) {
     return a.face - b.face;
   });
   return facesWithNdx;
@@ -5829,7 +5845,7 @@ function setTextureFromElement(gl, tex, element, options) {
   gl.bindTexture(target, tex);
   if (target === TEXTURE_CUBE_MAP) {
     // guess the parts
-    const imgWidth  = element.width;
+    const imgWidth = element.width;
     const imgHeight = element.height;
     let size;
     let slices;
@@ -5858,7 +5874,7 @@ function setTextureFromElement(gl, tex, element, options) {
       ctx.canvas.height = size;
       width = size;
       height = size;
-      getCubeFacesWithNdx(gl, options).forEach(function(f) {
+      getCubeFacesWithNdx(gl, options).forEach(function (f) {
         const xOffset = slices[f.ndx * 2 + 0] * size;
         const yOffset = slices[f.ndx * 2 + 1] * size;
         ctx.drawImage(element, xOffset, yOffset, size, size, 0, 0, size, size);
@@ -5872,7 +5888,7 @@ function setTextureFromElement(gl, tex, element, options) {
       // note lossy? (alpha is not premultiplied? although I'm not sure what
       width = size;
       height = size;
-      getCubeFacesWithNdx(gl, options).forEach(function(f) {
+      getCubeFacesWithNdx(gl, options).forEach(function (f) {
         const xOffset = slices[f.ndx * 2 + 0] * size;
         const yOffset = slices[f.ndx * 2 + 1] * size;
         // We can't easily use a default texture color here as it would have to match
@@ -5885,14 +5901,14 @@ function setTextureFromElement(gl, tex, element, options) {
           premultiplyAlpha: 'none',
           colorSpaceConversion: 'none',
         })
-        .then(function(imageBitmap) {
-          setPackState(gl, options);
-          gl.bindTexture(target, tex);
-          gl.texImage2D(f.face, level, internalFormat, format, type, imageBitmap);
-          if (shouldAutomaticallySetTextureFilteringForSize(options)) {
-            setTextureFilteringForSize(gl, tex, options, width, height, internalFormat);
-          }
-        });
+          .then(function (imageBitmap) {
+            setPackState(gl, options);
+            gl.bindTexture(target, tex);
+            gl.texImage2D(f.face, level, internalFormat, format, type, imageBitmap);
+            if (shouldAutomaticallySetTextureFilteringForSize(options)) {
+              setTextureFilteringForSize(gl, tex, options, width, height, internalFormat);
+            }
+          });
       });
     }
   } else if (target === TEXTURE_3D || target === TEXTURE_2D_ARRAY) {
@@ -5902,7 +5918,7 @@ function setTextureFromElement(gl, tex, element, options) {
     if (depth % 1 !== 0) {
       throw "can not compute 3D dimensions of element";
     }
-    const xMult = element.width  === largest ? 1 : 0;
+    const xMult = element.width === largest ? 1 : 0;
     const yMult = element.height === largest ? 1 : 0;
     gl.pixelStorei(UNPACK_ALIGNMENT, 1);
     gl.pixelStorei(UNPACK_ROW_LENGTH, element.width);
@@ -5941,8 +5957,8 @@ function urlIsSameOrigin(url) {
     const a = document.createElement('a');
     a.href = url;
     return a.hostname === location.hostname &&
-           a.port     === location.port &&
-           a.protocol === location.protocol;
+      a.port === location.port &&
+      a.protocol === location.protocol;
   } else {
     const localOrigin = (new URL(location.href)).origin;
     const urlOrigin = (new URL(url, location.href)).origin;
@@ -5952,8 +5968,8 @@ function urlIsSameOrigin(url) {
 
 function setToAnonymousIfUndefinedAndURLIsNotSameOrigin(url, crossOrigin) {
   return crossOrigin === undefined && !urlIsSameOrigin(url)
-     ? 'anonymous'
-     : crossOrigin;
+    ? 'anonymous'
+    : crossOrigin;
 }
 
 /**
@@ -6009,24 +6025,24 @@ function loadImage(url, crossOrigin, callback) {
     if (crossOrigin) {
       options.mode = 'cors'; // TODO: not sure how to translate image.crossOrigin
     }
-    fetch(url, options).then(function(response) {
+    fetch(url, options).then(function (response) {
       if (!response.ok) {
         throw response;
       }
       return response.blob();
-    }).then(function(blob) {
+    }).then(function (blob) {
       return createImageBitmap(blob, {
         premultiplyAlpha: 'none',
         colorSpaceConversion: 'none',
       });
-    }).then(function(bitmap) {
+    }).then(function (bitmap) {
       // not sure if this works. We don't want
       // to catch the user's error. So, call
       // the callback in a timeout so we're
       // not in this scope inside the promise.
       bm = bitmap;
       setTimeout(cb);
-    }).catch(function(e) {
+    }).catch(function (e) {
       err = e;
       setTimeout(cb);
     });
@@ -6044,8 +6060,8 @@ function loadImage(url, crossOrigin, callback) {
  */
 function isTexImageSource(obj) {
   return (typeof ImageBitmap !== 'undefined' && obj instanceof ImageBitmap) ||
-         (typeof ImageData !== 'undefined'  && obj instanceof ImageData) ||
-         (typeof HTMLElement !== 'undefined'  && obj instanceof HTMLElement);
+    (typeof ImageData !== 'undefined' && obj instanceof ImageData) ||
+    (typeof HTMLElement !== 'undefined' && obj instanceof HTMLElement);
 }
 
 /**
@@ -6061,7 +6077,7 @@ function isTexImageSource(obj) {
  */
 function loadAndUseImage(obj, crossOrigin, callback) {
   if (isTexImageSource(obj)) {
-    setTimeout(function() {
+    setTimeout(function () {
       callback(null, obj);
     });
     return obj;
@@ -6078,6 +6094,7 @@ function loadAndUseImage(obj, crossOrigin, callback) {
  * @param {module:twgl.TextureOptions} [options] A TextureOptions object with whatever parameters you want set.
  *   This is often the same options you passed in when you created the texture.
  * @memberOf module:twgl/textures
+ * @private
  */
 function setTextureTo1PixelColor(gl, tex, options) {
   options = options || defaults$1.textureOptions;
@@ -6167,7 +6184,7 @@ function loadTextureFromUrl(gl, tex, options, callback) {
   setTextureTo1PixelColor(gl, tex, options);
   // Because it's async we need to copy the options.
   options = Object.assign({}, options);
-  const img = loadAndUseImage(options.src, options.crossOrigin, function(err, img) {
+  const img = loadAndUseImage(options.src, options.crossOrigin, function (err, img) {
     if (err) {
       callback(err, tex, img);
     } else {
@@ -6187,6 +6204,7 @@ function loadTextureFromUrl(gl, tex, options, callback) {
  * @param {module:twgl.CubemapReadyCallback} [callback] A function to be called when all the images have finished loading. err will
  *    be non null if there was an error.
  * @memberOf module:twgl/textures
+ * @private
  */
 function loadCubemapFromUrls(gl, tex, options, callback) {
   callback = callback || noop;
@@ -6212,7 +6230,7 @@ function loadCubemapFromUrls(gl, tex, options, callback) {
   let imgs;  // eslint-disable-line
 
   function uploadImg(faceTarget) {
-    return function(err, img) {
+    return function (err, img) {
       --numToLoad;
       if (err) {
         errors.push(err);
@@ -6227,7 +6245,7 @@ function loadCubemapFromUrls(gl, tex, options, callback) {
           // and 5 faces that are 1x1 pixel so size the other faces
           if (numToLoad === 5) {
             // use the default order
-            getCubeFaceOrder().forEach(function(otherTarget) {
+            getCubeFaceOrder().forEach(function (otherTarget) {
               // Should we re-use the same face or a color?
               gl.texImage2D(otherTarget, level, internalFormat, format, type, img);
             });
@@ -6247,7 +6265,7 @@ function loadCubemapFromUrls(gl, tex, options, callback) {
     };
   }
 
-  imgs = urls.map(function(url, ndx) {
+  imgs = urls.map(function (url, ndx) {
     return loadAndUseImage(url, options.crossOrigin, uploadImg(faces[ndx]));
   });
 }
@@ -6270,6 +6288,7 @@ function loadCubemapFromUrls(gl, tex, options, callback) {
  * @param {module:twgl.ThreeDReadyCallback} [callback] A function to be called when all the images have finished loading. err will
  *    be non null if there was an error.
  * @memberOf module:twgl/textures
+ * @private
  */
 function loadSlicesFromUrls(gl, tex, options, callback) {
   callback = callback || noop;
@@ -6295,7 +6314,7 @@ function loadSlicesFromUrls(gl, tex, options, callback) {
   let firstImage = true;
 
   function uploadImg(slice) {
-    return function(err, img) {
+    return function (err, img) {
       --numToLoad;
       if (err) {
         errors.push(err);
@@ -6345,7 +6364,7 @@ function loadSlicesFromUrls(gl, tex, options, callback) {
     };
   }
 
-  imgs = urls.map(function(url, ndx) {
+  imgs = urls.map(function (url, ndx) {
     return loadAndUseImage(url, options.crossOrigin, uploadImg(ndx));
   });
 }
@@ -6482,7 +6501,7 @@ function createTexture(gl, options, callback) {
   options = options || defaults$1.textureOptions;
   const tex = gl.createTexture();
   const target = options.target || TEXTURE_2D;
-  let width  = options.width  || 1;
+  let width = options.width || 1;
   let height = options.height || 1;
   const internalFormat = options.internalFormat || RGBA;
   gl.bindTexture(target, tex);
@@ -6499,14 +6518,14 @@ function createTexture(gl, options, callback) {
     if (typeof (src) === "string") {
       loadTextureFromUrl(gl, tex, options, callback);
     } else if (isArrayBuffer$1(src) ||
-               (Array.isArray(src) && (
-                    typeof src[0] === 'number' ||
-                    Array.isArray(src[0]) ||
-                    isArrayBuffer$1(src[0]))
-               )
-              ) {
+      (Array.isArray(src) && (
+        typeof src[0] === 'number' ||
+        Array.isArray(src[0]) ||
+        isArrayBuffer$1(src[0]))
+      )
+    ) {
       const dimensions = setTextureFromArray(gl, tex, src, options);
-      width  = dimensions.width;
+      width = dimensions.width;
       height = dimensions.height;
     } else if (Array.isArray(src) && (typeof (src[0]) === 'string' || isTexImageSource(src[0]))) {
       if (target === TEXTURE_CUBE_MAP) {
@@ -6516,7 +6535,7 @@ function createTexture(gl, options, callback) {
       }
     } else { // if (isTexImageSource(src))
       setTextureFromElement(gl, tex, src, options);
-      width  = src.width;
+      width = src.width;
       height = src.height;
     }
   } else {
@@ -6586,7 +6605,7 @@ function resizeTexture(gl, tex, options, width, height, depth) {
  */
 function isAsyncSrc(src) {
   return typeof src === 'string' ||
-         (Array.isArray(src) && typeof src[0] === 'string');
+    (Array.isArray(src) && typeof src[0] === 'string');
 }
 
 /**
@@ -6673,17 +6692,17 @@ function createTextures(gl, textureOptions, callback) {
 
   function callCallbackIfReady() {
     if (numDownloading === 0) {
-      setTimeout(function() {
+      setTimeout(function () {
         callback(errors.length ? errors : undefined, textures, images);
       }, 0);
     }
   }
 
-  Object.keys(textureOptions).forEach(function(name) {
+  Object.keys(textureOptions).forEach(function (name) {
     const options = textureOptions[name];
     let onLoadFn;
     if (isAsyncSrc(options.src)) {
-      onLoadFn = function(err, tex, img) {
+      onLoadFn = function (err, tex, img) {
         images[name] = img;
         --numDownloading;
         if (err) {
@@ -6769,85 +6788,86 @@ const error$1 = error;
 const warn$1 = warn;
 function getElementById(id) {
   return (typeof document !== 'undefined' && document.getElementById)
-      ? document.getElementById(id)
-      : null;
+    ? document.getElementById(id)
+    : null;
 }
 
-const TEXTURE0                       = 0x84c0;
-const DYNAMIC_DRAW                   = 0x88e8;
+const TEXTURE0 = 0x84c0;
+const DYNAMIC_DRAW = 0x88e8;
 
-const ARRAY_BUFFER$1                   = 0x8892;
-const ELEMENT_ARRAY_BUFFER$1           = 0x8893;
-const UNIFORM_BUFFER                 = 0x8a11;
-const TRANSFORM_FEEDBACK_BUFFER      = 0x8c8e;
+const ARRAY_BUFFER$1 = 0x8892;
+const ELEMENT_ARRAY_BUFFER$1 = 0x8893;
+const UNIFORM_BUFFER = 0x8a11;
+const TRANSFORM_FEEDBACK_BUFFER = 0x8c8e;
 
-const TRANSFORM_FEEDBACK             = 0x8e22;
+const TRANSFORM_FEEDBACK = 0x8e22;
 
-const COMPILE_STATUS                 = 0x8b81;
-const LINK_STATUS                    = 0x8b82;
-const FRAGMENT_SHADER                = 0x8b30;
-const VERTEX_SHADER                  = 0x8b31;
-const SEPARATE_ATTRIBS               = 0x8c8d;
+const COMPILE_STATUS = 0x8b81;
+const LINK_STATUS = 0x8b82;
+const FRAGMENT_SHADER = 0x8b30;
+const VERTEX_SHADER = 0x8b31;
+const SEPARATE_ATTRIBS = 0x8c8d;
 
-const ACTIVE_UNIFORMS                = 0x8b86;
-const ACTIVE_ATTRIBUTES              = 0x8b89;
-const TRANSFORM_FEEDBACK_VARYINGS    = 0x8c83;
-const ACTIVE_UNIFORM_BLOCKS          = 0x8a36;
-const UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER   = 0x8a44;
+const ACTIVE_UNIFORMS = 0x8b86;
+const ACTIVE_ATTRIBUTES = 0x8b89;
+const TRANSFORM_FEEDBACK_VARYINGS = 0x8c83;
+const ACTIVE_UNIFORM_BLOCKS = 0x8a36;
+const UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8a44;
 const UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8a46;
-const UNIFORM_BLOCK_DATA_SIZE                     = 0x8a40;
-const UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES        = 0x8a43;
+const UNIFORM_BLOCK_DATA_SIZE = 0x8a40;
+const UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8a43;
 
-const FLOAT$3                         = 0x1406;
-const FLOAT_VEC2                    = 0x8B50;
-const FLOAT_VEC3                    = 0x8B51;
-const FLOAT_VEC4                    = 0x8B52;
-const INT$3                           = 0x1404;
-const INT_VEC2                      = 0x8B53;
-const INT_VEC3                      = 0x8B54;
-const INT_VEC4                      = 0x8B55;
-const BOOL                          = 0x8B56;
-const BOOL_VEC2                     = 0x8B57;
-const BOOL_VEC3                     = 0x8B58;
-const BOOL_VEC4                     = 0x8B59;
-const FLOAT_MAT2                    = 0x8B5A;
-const FLOAT_MAT3                    = 0x8B5B;
-const FLOAT_MAT4                    = 0x8B5C;
-const SAMPLER_2D                    = 0x8B5E;
-const SAMPLER_CUBE                  = 0x8B60;
-const SAMPLER_3D                    = 0x8B5F;
-const SAMPLER_2D_SHADOW             = 0x8B62;
-const FLOAT_MAT2x3                  = 0x8B65;
-const FLOAT_MAT2x4                  = 0x8B66;
-const FLOAT_MAT3x2                  = 0x8B67;
-const FLOAT_MAT3x4                  = 0x8B68;
-const FLOAT_MAT4x2                  = 0x8B69;
-const FLOAT_MAT4x3                  = 0x8B6A;
-const SAMPLER_2D_ARRAY              = 0x8DC1;
-const SAMPLER_2D_ARRAY_SHADOW       = 0x8DC4;
-const SAMPLER_CUBE_SHADOW           = 0x8DC5;
-const UNSIGNED_INT$3                  = 0x1405;
-const UNSIGNED_INT_VEC2             = 0x8DC6;
-const UNSIGNED_INT_VEC3             = 0x8DC7;
-const UNSIGNED_INT_VEC4             = 0x8DC8;
-const INT_SAMPLER_2D                = 0x8DCA;
-const INT_SAMPLER_3D                = 0x8DCB;
-const INT_SAMPLER_CUBE              = 0x8DCC;
-const INT_SAMPLER_2D_ARRAY          = 0x8DCF;
-const UNSIGNED_INT_SAMPLER_2D       = 0x8DD2;
-const UNSIGNED_INT_SAMPLER_3D       = 0x8DD3;
-const UNSIGNED_INT_SAMPLER_CUBE     = 0x8DD4;
+const FLOAT$3 = 0x1406;
+const FLOAT_VEC2 = 0x8B50;
+const FLOAT_VEC3 = 0x8B51;
+const FLOAT_VEC4 = 0x8B52;
+const INT$3 = 0x1404;
+const INT_VEC2 = 0x8B53;
+const INT_VEC3 = 0x8B54;
+const INT_VEC4 = 0x8B55;
+const BOOL = 0x8B56;
+const BOOL_VEC2 = 0x8B57;
+const BOOL_VEC3 = 0x8B58;
+const BOOL_VEC4 = 0x8B59;
+const FLOAT_MAT2 = 0x8B5A;
+const FLOAT_MAT3 = 0x8B5B;
+const FLOAT_MAT4 = 0x8B5C;
+const SAMPLER_2D = 0x8B5E;
+const SAMPLER_CUBE = 0x8B60;
+const SAMPLER_3D = 0x8B5F;
+const SAMPLER_2D_SHADOW = 0x8B62;
+const FLOAT_MAT2x3 = 0x8B65;
+const FLOAT_MAT2x4 = 0x8B66;
+const FLOAT_MAT3x2 = 0x8B67;
+const FLOAT_MAT3x4 = 0x8B68;
+const FLOAT_MAT4x2 = 0x8B69;
+const FLOAT_MAT4x3 = 0x8B6A;
+const SAMPLER_2D_ARRAY = 0x8DC1;
+const SAMPLER_2D_ARRAY_SHADOW = 0x8DC4;
+const SAMPLER_CUBE_SHADOW = 0x8DC5;
+const UNSIGNED_INT$3 = 0x1405;
+const UNSIGNED_INT_VEC2 = 0x8DC6;
+const UNSIGNED_INT_VEC3 = 0x8DC7;
+const UNSIGNED_INT_VEC4 = 0x8DC8;
+const INT_SAMPLER_2D = 0x8DCA;
+const INT_SAMPLER_3D = 0x8DCB;
+const INT_SAMPLER_CUBE = 0x8DCC;
+const INT_SAMPLER_2D_ARRAY = 0x8DCF;
+const UNSIGNED_INT_SAMPLER_2D = 0x8DD2;
+const UNSIGNED_INT_SAMPLER_3D = 0x8DD3;
+const UNSIGNED_INT_SAMPLER_CUBE = 0x8DD4;
 const UNSIGNED_INT_SAMPLER_2D_ARRAY = 0x8DD7;
 
-const TEXTURE_2D$1                    = 0x0DE1;
-const TEXTURE_CUBE_MAP$1              = 0x8513;
-const TEXTURE_3D$1                    = 0x806F;
-const TEXTURE_2D_ARRAY$1              = 0x8C1A;
+const TEXTURE_2D$1 = 0x0DE1;
+const TEXTURE_CUBE_MAP$1 = 0x8513;
+const TEXTURE_3D$1 = 0x806F;
+const TEXTURE_2D_ARRAY$1 = 0x8C1A;
 
 const typeMap = {};
 
 /**
  * Returns the corresponding bind point for a given sampler type
+ * @private
  */
 function getBindPointForSamplerType(gl, type) {
   return typeMap[type].bindPoint;
@@ -6857,152 +6877,152 @@ function getBindPointForSamplerType(gl, type) {
 // this code could be a lot smaller but that is sadly really slow (T_T)
 
 function floatSetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1f(location, v);
   };
 }
 
 function floatArraySetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1fv(location, v);
   };
 }
 
 function floatVec2Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform2fv(location, v);
   };
 }
 
 function floatVec3Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform3fv(location, v);
   };
 }
 
 function floatVec4Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform4fv(location, v);
   };
 }
 
 function intSetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1i(location, v);
   };
 }
 
 function intArraySetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1iv(location, v);
   };
 }
 
 function intVec2Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform2iv(location, v);
   };
 }
 
 function intVec3Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform3iv(location, v);
   };
 }
 
 function intVec4Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform4iv(location, v);
   };
 }
 
 function uintSetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1ui(location, v);
   };
 }
 
 function uintArraySetter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform1uiv(location, v);
   };
 }
 
 function uintVec2Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform2uiv(location, v);
   };
 }
 
 function uintVec3Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform3uiv(location, v);
   };
 }
 
 function uintVec4Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniform4uiv(location, v);
   };
 }
 
 function floatMat2Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix2fv(location, false, v);
   };
 }
 
 function floatMat3Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix3fv(location, false, v);
   };
 }
 
 function floatMat4Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix4fv(location, false, v);
   };
 }
 
 function floatMat23Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix2x3fv(location, false, v);
   };
 }
 
 function floatMat32Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix3x2fv(location, false, v);
   };
 }
 
 function floatMat24Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix2x4fv(location, false, v);
   };
 }
 
 function floatMat42Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix4x2fv(location, false, v);
   };
 }
 
 function floatMat34Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix3x4fv(location, false, v);
   };
 }
 
 function floatMat43Setter(gl, location) {
-  return function(v) {
+  return function (v) {
     gl.uniformMatrix4x3fv(location, false, v);
   };
 }
 
 function samplerSetter(gl, type, unit, location) {
   const bindPoint = getBindPointForSamplerType(gl, type);
-  return isWebGL2(gl) ? function(textureOrPair) {
+  return isWebGL2(gl) ? function (textureOrPair) {
     let texture;
     let sampler;
     if (isTexture(gl, textureOrPair)) {
@@ -7016,7 +7036,7 @@ function samplerSetter(gl, type, unit, location) {
     gl.activeTexture(TEXTURE0 + unit);
     gl.bindTexture(bindPoint, texture);
     gl.bindSampler(unit, sampler);
-  } : function(texture) {
+  } : function (texture) {
     gl.uniform1i(location, unit);
     gl.activeTexture(TEXTURE0 + unit);
     gl.bindTexture(bindPoint, texture);
@@ -7030,9 +7050,9 @@ function samplerArraySetter(gl, type, unit, location, size) {
     units[ii] = unit + ii;
   }
 
-  return isWebGL2(gl) ? function(textures) {
+  return isWebGL2(gl) ? function (textures) {
     gl.uniform1iv(location, units);
-    textures.forEach(function(textureOrPair, index) {
+    textures.forEach(function (textureOrPair, index) {
       gl.activeTexture(TEXTURE0 + units[index]);
       let texture;
       let sampler;
@@ -7046,58 +7066,58 @@ function samplerArraySetter(gl, type, unit, location, size) {
       gl.bindSampler(unit, sampler);
       gl.bindTexture(bindPoint, texture);
     });
-  } : function(textures) {
+  } : function (textures) {
     gl.uniform1iv(location, units);
-    textures.forEach(function(texture, index) {
+    textures.forEach(function (texture, index) {
       gl.activeTexture(TEXTURE0 + units[index]);
       gl.bindTexture(bindPoint, texture);
     });
   };
 }
 
-typeMap[FLOAT$3]                         = { Type: Float32Array, size:  4, setter: floatSetter,      arraySetter: floatArraySetter, };
-typeMap[FLOAT_VEC2]                    = { Type: Float32Array, size:  8, setter: floatVec2Setter,  cols: 2, };
-typeMap[FLOAT_VEC3]                    = { Type: Float32Array, size: 12, setter: floatVec3Setter,  cols: 3, };
-typeMap[FLOAT_VEC4]                    = { Type: Float32Array, size: 16, setter: floatVec4Setter,  cols: 4, };
-typeMap[INT$3]                           = { Type: Int32Array,   size:  4, setter: intSetter,        arraySetter: intArraySetter, };
-typeMap[INT_VEC2]                      = { Type: Int32Array,   size:  8, setter: intVec2Setter,    cols: 2, };
-typeMap[INT_VEC3]                      = { Type: Int32Array,   size: 12, setter: intVec3Setter,    cols: 3, };
-typeMap[INT_VEC4]                      = { Type: Int32Array,   size: 16, setter: intVec4Setter,    cols: 4, };
-typeMap[UNSIGNED_INT$3]                  = { Type: Uint32Array,  size:  4, setter: uintSetter,       arraySetter: uintArraySetter, };
-typeMap[UNSIGNED_INT_VEC2]             = { Type: Uint32Array,  size:  8, setter: uintVec2Setter,   cols: 2, };
-typeMap[UNSIGNED_INT_VEC3]             = { Type: Uint32Array,  size: 12, setter: uintVec3Setter,   cols: 3, };
-typeMap[UNSIGNED_INT_VEC4]             = { Type: Uint32Array,  size: 16, setter: uintVec4Setter,   cols: 4, };
-typeMap[BOOL]                          = { Type: Uint32Array,  size:  4, setter: intSetter,        arraySetter: intArraySetter, };
-typeMap[BOOL_VEC2]                     = { Type: Uint32Array,  size:  8, setter: intVec2Setter,    cols: 2, };
-typeMap[BOOL_VEC3]                     = { Type: Uint32Array,  size: 12, setter: intVec3Setter,    cols: 3, };
-typeMap[BOOL_VEC4]                     = { Type: Uint32Array,  size: 16, setter: intVec4Setter,    cols: 4, };
-typeMap[FLOAT_MAT2]                    = { Type: Float32Array, size: 32, setter: floatMat2Setter,  rows: 2, cols: 2, };
-typeMap[FLOAT_MAT3]                    = { Type: Float32Array, size: 48, setter: floatMat3Setter,  rows: 3, cols: 3, };
-typeMap[FLOAT_MAT4]                    = { Type: Float32Array, size: 64, setter: floatMat4Setter,  rows: 4, cols: 4, };
-typeMap[FLOAT_MAT2x3]                  = { Type: Float32Array, size: 32, setter: floatMat23Setter, rows: 2, cols: 3, };
-typeMap[FLOAT_MAT2x4]                  = { Type: Float32Array, size: 32, setter: floatMat24Setter, rows: 2, cols: 4, };
-typeMap[FLOAT_MAT3x2]                  = { Type: Float32Array, size: 48, setter: floatMat32Setter, rows: 3, cols: 2, };
-typeMap[FLOAT_MAT3x4]                  = { Type: Float32Array, size: 48, setter: floatMat34Setter, rows: 3, cols: 4, };
-typeMap[FLOAT_MAT4x2]                  = { Type: Float32Array, size: 64, setter: floatMat42Setter, rows: 4, cols: 2, };
-typeMap[FLOAT_MAT4x3]                  = { Type: Float32Array, size: 64, setter: floatMat43Setter, rows: 4, cols: 3, };
-typeMap[SAMPLER_2D]                    = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1,       };
-typeMap[SAMPLER_CUBE]                  = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
-typeMap[SAMPLER_3D]                    = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1,       };
-typeMap[SAMPLER_2D_SHADOW]             = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1,       };
-typeMap[SAMPLER_2D_ARRAY]              = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
-typeMap[SAMPLER_2D_ARRAY_SHADOW]       = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
-typeMap[SAMPLER_CUBE_SHADOW]           = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
-typeMap[INT_SAMPLER_2D]                = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1,       };
-typeMap[INT_SAMPLER_3D]                = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1,       };
-typeMap[INT_SAMPLER_CUBE]              = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
-typeMap[INT_SAMPLER_2D_ARRAY]          = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
-typeMap[UNSIGNED_INT_SAMPLER_2D]       = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1,       };
-typeMap[UNSIGNED_INT_SAMPLER_3D]       = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1,       };
-typeMap[UNSIGNED_INT_SAMPLER_CUBE]     = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
-typeMap[UNSIGNED_INT_SAMPLER_2D_ARRAY] = { Type: null,         size:  0, setter: samplerSetter,    arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
+typeMap[FLOAT$3] = { Type: Float32Array, size: 4, setter: floatSetter, arraySetter: floatArraySetter, };
+typeMap[FLOAT_VEC2] = { Type: Float32Array, size: 8, setter: floatVec2Setter, cols: 2, };
+typeMap[FLOAT_VEC3] = { Type: Float32Array, size: 12, setter: floatVec3Setter, cols: 3, };
+typeMap[FLOAT_VEC4] = { Type: Float32Array, size: 16, setter: floatVec4Setter, cols: 4, };
+typeMap[INT$3] = { Type: Int32Array, size: 4, setter: intSetter, arraySetter: intArraySetter, };
+typeMap[INT_VEC2] = { Type: Int32Array, size: 8, setter: intVec2Setter, cols: 2, };
+typeMap[INT_VEC3] = { Type: Int32Array, size: 12, setter: intVec3Setter, cols: 3, };
+typeMap[INT_VEC4] = { Type: Int32Array, size: 16, setter: intVec4Setter, cols: 4, };
+typeMap[UNSIGNED_INT$3] = { Type: Uint32Array, size: 4, setter: uintSetter, arraySetter: uintArraySetter, };
+typeMap[UNSIGNED_INT_VEC2] = { Type: Uint32Array, size: 8, setter: uintVec2Setter, cols: 2, };
+typeMap[UNSIGNED_INT_VEC3] = { Type: Uint32Array, size: 12, setter: uintVec3Setter, cols: 3, };
+typeMap[UNSIGNED_INT_VEC4] = { Type: Uint32Array, size: 16, setter: uintVec4Setter, cols: 4, };
+typeMap[BOOL] = { Type: Uint32Array, size: 4, setter: intSetter, arraySetter: intArraySetter, };
+typeMap[BOOL_VEC2] = { Type: Uint32Array, size: 8, setter: intVec2Setter, cols: 2, };
+typeMap[BOOL_VEC3] = { Type: Uint32Array, size: 12, setter: intVec3Setter, cols: 3, };
+typeMap[BOOL_VEC4] = { Type: Uint32Array, size: 16, setter: intVec4Setter, cols: 4, };
+typeMap[FLOAT_MAT2] = { Type: Float32Array, size: 32, setter: floatMat2Setter, rows: 2, cols: 2, };
+typeMap[FLOAT_MAT3] = { Type: Float32Array, size: 48, setter: floatMat3Setter, rows: 3, cols: 3, };
+typeMap[FLOAT_MAT4] = { Type: Float32Array, size: 64, setter: floatMat4Setter, rows: 4, cols: 4, };
+typeMap[FLOAT_MAT2x3] = { Type: Float32Array, size: 32, setter: floatMat23Setter, rows: 2, cols: 3, };
+typeMap[FLOAT_MAT2x4] = { Type: Float32Array, size: 32, setter: floatMat24Setter, rows: 2, cols: 4, };
+typeMap[FLOAT_MAT3x2] = { Type: Float32Array, size: 48, setter: floatMat32Setter, rows: 3, cols: 2, };
+typeMap[FLOAT_MAT3x4] = { Type: Float32Array, size: 48, setter: floatMat34Setter, rows: 3, cols: 4, };
+typeMap[FLOAT_MAT4x2] = { Type: Float32Array, size: 64, setter: floatMat42Setter, rows: 4, cols: 2, };
+typeMap[FLOAT_MAT4x3] = { Type: Float32Array, size: 64, setter: floatMat43Setter, rows: 4, cols: 3, };
+typeMap[SAMPLER_2D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1, };
+typeMap[SAMPLER_CUBE] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
+typeMap[SAMPLER_3D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1, };
+typeMap[SAMPLER_2D_SHADOW] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1, };
+typeMap[SAMPLER_2D_ARRAY] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
+typeMap[SAMPLER_2D_ARRAY_SHADOW] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
+typeMap[SAMPLER_CUBE_SHADOW] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
+typeMap[INT_SAMPLER_2D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1, };
+typeMap[INT_SAMPLER_3D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1, };
+typeMap[INT_SAMPLER_CUBE] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
+typeMap[INT_SAMPLER_2D_ARRAY] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
+typeMap[UNSIGNED_INT_SAMPLER_2D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D$1, };
+typeMap[UNSIGNED_INT_SAMPLER_3D] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_3D$1, };
+typeMap[UNSIGNED_INT_SAMPLER_CUBE] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_CUBE_MAP$1, };
+typeMap[UNSIGNED_INT_SAMPLER_2D_ARRAY] = { Type: null, size: 0, setter: samplerSetter, arraySetter: samplerArraySetter, bindPoint: TEXTURE_2D_ARRAY$1, };
 
 function floatAttribSetter(gl, index) {
-  return function(b) {
+  return function (b) {
     if (b.value) {
       gl.disableVertexAttribArray(index);
       switch (b.value.length) {
@@ -7120,7 +7140,7 @@ function floatAttribSetter(gl, index) {
       gl.bindBuffer(ARRAY_BUFFER$1, b.buffer);
       gl.enableVertexAttribArray(index);
       gl.vertexAttribPointer(
-          index, b.numComponents || b.size, b.type || FLOAT$3, b.normalize || false, b.stride || 0, b.offset || 0);
+        index, b.numComponents || b.size, b.type || FLOAT$3, b.normalize || false, b.stride || 0, b.offset || 0);
       if (b.divisor !== undefined) {
         gl.vertexAttribDivisor(index, b.divisor);
       }
@@ -7129,7 +7149,7 @@ function floatAttribSetter(gl, index) {
 }
 
 function intAttribSetter(gl, index) {
-  return function(b) {
+  return function (b) {
     if (b.value) {
       gl.disableVertexAttribArray(index);
       if (b.value.length === 4) {
@@ -7141,7 +7161,7 @@ function intAttribSetter(gl, index) {
       gl.bindBuffer(ARRAY_BUFFER$1, b.buffer);
       gl.enableVertexAttribArray(index);
       gl.vertexAttribIPointer(
-          index, b.numComponents || b.size, b.type || INT$3, b.stride || 0, b.offset || 0);
+        index, b.numComponents || b.size, b.type || INT$3, b.stride || 0, b.offset || 0);
       if (b.divisor !== undefined) {
         gl.vertexAttribDivisor(index, b.divisor);
       }
@@ -7150,7 +7170,7 @@ function intAttribSetter(gl, index) {
 }
 
 function uintAttribSetter(gl, index) {
-  return function(b) {
+  return function (b) {
     if (b.value) {
       gl.disableVertexAttribArray(index);
       if (b.value.length === 4) {
@@ -7162,7 +7182,7 @@ function uintAttribSetter(gl, index) {
       gl.bindBuffer(ARRAY_BUFFER$1, b.buffer);
       gl.enableVertexAttribArray(index);
       gl.vertexAttribIPointer(
-          index, b.numComponents || b.size, b.type || UNSIGNED_INT$3, b.stride || 0, b.offset || 0);
+        index, b.numComponents || b.size, b.type || UNSIGNED_INT$3, b.stride || 0, b.offset || 0);
       if (b.divisor !== undefined) {
         gl.vertexAttribDivisor(index, b.divisor);
       }
@@ -7174,7 +7194,7 @@ function matAttribSetter(gl, index, typeInfo) {
   const defaultSize = typeInfo.size;
   const count = typeInfo.count;
 
-  return function(b) {
+  return function (b) {
     gl.bindBuffer(ARRAY_BUFFER$1, b.buffer);
     const numComponents = b.size || b.numComponents || defaultSize;
     const size = numComponents / count;
@@ -7187,7 +7207,7 @@ function matAttribSetter(gl, index, typeInfo) {
     for (let i = 0; i < count; ++i) {
       gl.enableVertexAttribArray(index + i);
       gl.vertexAttribPointer(
-          index + i, size, type, normalize, stride, offset + rowOffset * i);
+        index + i, size, type, normalize, stride, offset + rowOffset * i);
       if (b.divisor !== undefined) {
         gl.vertexAttribDivisor(index + i, b.divisor);
       }
@@ -7198,25 +7218,25 @@ function matAttribSetter(gl, index, typeInfo) {
 
 
 const attrTypeMap = {};
-attrTypeMap[FLOAT$3]             = { size:  4, setter: floatAttribSetter, };
-attrTypeMap[FLOAT_VEC2]        = { size:  8, setter: floatAttribSetter, };
-attrTypeMap[FLOAT_VEC3]        = { size: 12, setter: floatAttribSetter, };
-attrTypeMap[FLOAT_VEC4]        = { size: 16, setter: floatAttribSetter, };
-attrTypeMap[INT$3]               = { size:  4, setter: intAttribSetter,   };
-attrTypeMap[INT_VEC2]          = { size:  8, setter: intAttribSetter,   };
-attrTypeMap[INT_VEC3]          = { size: 12, setter: intAttribSetter,   };
-attrTypeMap[INT_VEC4]          = { size: 16, setter: intAttribSetter,   };
-attrTypeMap[UNSIGNED_INT$3]      = { size:  4, setter: uintAttribSetter,  };
-attrTypeMap[UNSIGNED_INT_VEC2] = { size:  8, setter: uintAttribSetter,  };
-attrTypeMap[UNSIGNED_INT_VEC3] = { size: 12, setter: uintAttribSetter,  };
-attrTypeMap[UNSIGNED_INT_VEC4] = { size: 16, setter: uintAttribSetter,  };
-attrTypeMap[BOOL]              = { size:  4, setter: intAttribSetter,   };
-attrTypeMap[BOOL_VEC2]         = { size:  8, setter: intAttribSetter,   };
-attrTypeMap[BOOL_VEC3]         = { size: 12, setter: intAttribSetter,   };
-attrTypeMap[BOOL_VEC4]         = { size: 16, setter: intAttribSetter,   };
-attrTypeMap[FLOAT_MAT2]        = { size:  4, setter: matAttribSetter,   count: 2, };
-attrTypeMap[FLOAT_MAT3]        = { size:  9, setter: matAttribSetter,   count: 3, };
-attrTypeMap[FLOAT_MAT4]        = { size: 16, setter: matAttribSetter,   count: 4, };
+attrTypeMap[FLOAT$3] = { size: 4, setter: floatAttribSetter, };
+attrTypeMap[FLOAT_VEC2] = { size: 8, setter: floatAttribSetter, };
+attrTypeMap[FLOAT_VEC3] = { size: 12, setter: floatAttribSetter, };
+attrTypeMap[FLOAT_VEC4] = { size: 16, setter: floatAttribSetter, };
+attrTypeMap[INT$3] = { size: 4, setter: intAttribSetter, };
+attrTypeMap[INT_VEC2] = { size: 8, setter: intAttribSetter, };
+attrTypeMap[INT_VEC3] = { size: 12, setter: intAttribSetter, };
+attrTypeMap[INT_VEC4] = { size: 16, setter: intAttribSetter, };
+attrTypeMap[UNSIGNED_INT$3] = { size: 4, setter: uintAttribSetter, };
+attrTypeMap[UNSIGNED_INT_VEC2] = { size: 8, setter: uintAttribSetter, };
+attrTypeMap[UNSIGNED_INT_VEC3] = { size: 12, setter: uintAttribSetter, };
+attrTypeMap[UNSIGNED_INT_VEC4] = { size: 16, setter: uintAttribSetter, };
+attrTypeMap[BOOL] = { size: 4, setter: intAttribSetter, };
+attrTypeMap[BOOL_VEC2] = { size: 8, setter: intAttribSetter, };
+attrTypeMap[BOOL_VEC3] = { size: 12, setter: intAttribSetter, };
+attrTypeMap[BOOL_VEC4] = { size: 16, setter: intAttribSetter, };
+attrTypeMap[FLOAT_MAT2] = { size: 4, setter: matAttribSetter, count: 2, };
+attrTypeMap[FLOAT_MAT3] = { size: 9, setter: matAttribSetter, count: 3, };
+attrTypeMap[FLOAT_MAT4] = { size: 16, setter: matAttribSetter, count: 4, };
 
 const errorRE = /ERROR:\s*\d+:(\d+)/gi;
 function addLineNumbersWithError(src, log = '', lineOffset = 0) {
@@ -7243,56 +7263,103 @@ function addLineNumbersWithError(src, log = '', lineOffset = 0) {
  * @memberOf module:twgl
  */
 
+/**
+ * Program Callback
+ * @callback ProgramCallback
+ * @param {string} [err] error message, falsy if no error
+ * @param {WebGLProgram|module:twgl.ProgramInfo} [result] the program or programInfo
+ */
+
 const spaceRE = /^[ \t]*\n/;
+
+/**
+ * Remove the first end of line because WebGL 2.0 requires
+ * #version 300 es
+ * as the first line. No whitespace allowed before that line
+ * so
+ *
+ * <script>
+ * #version 300 es
+ * </script>
+ *
+ * Has one line before it which is invalid according to GLSL ES 3.00
+ *
+ * @param {string} shaderSource The source of the shader
+ * @returns {{shaderSource: string, lineOffset: number}}
+ * @private
+ */
+function prepShaderSource(shaderSource) {
+  let lineOffset = 0;
+  if (spaceRE.test(shaderSource)) {
+    lineOffset = 1;
+    shaderSource = shaderSource.replace(spaceRE, '');
+  }
+  return { lineOffset, shaderSource };
+}
+
+/**
+ * @param {module:twgl.ProgramOptions} progOptions
+ * @param {string} msg
+ * @return null
+ * @private
+ */
+function reportError(progOptions, msg) {
+  progOptions.errorCallback(msg);
+  if (progOptions.callback) {
+    setTimeout(() => {
+      progOptions.callback(`${msg}\n${progOptions.errors.join('\n')}`);
+    });
+  }
+  return null;
+}
 
 /**
  * Loads a shader.
  * @param {WebGLRenderingContext} gl The WebGLRenderingContext to use.
  * @param {string} shaderSource The shader source.
  * @param {number} shaderType The type of shader.
- * @param {module:twgl.ErrorCallback} opt_errorCallback callback for errors.
+ * @param {module:twgl.ProgramOptions} progOptions
  * @return {WebGLShader} The created shader.
  * @private
  */
-function loadShader(gl, shaderSource, shaderType, opt_errorCallback) {
-  const errFn = opt_errorCallback || error$1;
+function loadShader(gl, shaderSource, shaderType, progOptions) {
   // Create the shader object
   const shader = gl.createShader(shaderType);
 
-  // Remove the first end of line because WebGL 2.0 requires
-  // #version 300 es
-  // as the first line. No whitespace allowed before that line
-  // so
-  //
-  // <script>
-  // #version 300 es
-  // </script>
-  //
-  // Has one line before it which is invalid according to GLSL ES 3.00
-  //
-  let lineOffset = 0;
-  if (spaceRE.test(shaderSource)) {
-    lineOffset = 1;
-    shaderSource = shaderSource.replace(spaceRE, '');
-  }
-
   // Load the shader source
-  gl.shaderSource(shader, shaderSource);
+  gl.shaderSource(shader, prepShaderSource(shaderSource).shaderSource);
 
   // Compile the shader
   gl.compileShader(shader);
 
-  // Check the compile status
-  const compiled = gl.getShaderParameter(shader, COMPILE_STATUS);
-  if (!compiled) {
-    // Something went wrong during compilation; get the error
-    const lastError = gl.getShaderInfoLog(shader);
-    errFn(`${addLineNumbersWithError(shaderSource, lastError, lineOffset)}\nError compiling ${glEnumToString(gl, shaderType)}: ${lastError}`);
+  if (!progOptions.callback && !checkShaderStatus(gl, shaderType, shader, progOptions.errorCallback)) {
     gl.deleteShader(shader);
     return null;
   }
 
   return shader;
+}
+
+/**
+ * Check Shader status
+ * @param {WebGLRenderingContext} gl The WebGLRenderingContext to use.
+ * @param {number} shaderType The shader type
+ * @param {WebGLShader} shader The shader
+ * @param {ErrorCallback} [errFn] function to receive error message.
+ * @return {bool} true if shader is ok.
+ * @private
+ */
+function checkShaderStatus(gl, shaderType, shader, errFn) {
+  errFn = errFn || error$1;
+  // Check the compile status
+  const compiled = gl.getShaderParameter(shader, COMPILE_STATUS);
+  if (!compiled) {
+    // Something went wrong during compilation; get the error
+    const lastError = gl.getShaderInfoLog(shader);
+    const { lineOffset, shaderSource } = prepShaderSource(gl.getShaderSource(shader));
+    errFn(`${addLineNumbersWithError(shaderSource, lastError, lineOffset)}\nError compiling ${glEnumToString(gl, shaderType)}: ${lastError}`);
+  }
+  return compiled;
 }
 
 /**
@@ -7303,6 +7370,7 @@ function loadShader(gl, shaderSource, shaderType, opt_errorCallback) {
  *   a BufferInfo will use the attribs names inside. If passed an object of AttribInfos will use the names from that object. Otherwise
  *   you can pass an array of names.
  * @property {number} [transformFeedbackMode] the mode to pass `gl.transformFeedbackVaryings`. Defaults to `SEPARATE_ATTRIBS`.
+ * @property {ProgramCallback} [callback] callback for async program compilation.
  * @memberOf module:twgl
  */
 
@@ -7318,6 +7386,7 @@ function loadShader(gl, shaderSource, shaderType, opt_errorCallback) {
 function getProgramOptions(opt_attribs, opt_locations, opt_errorCallback) {
   let transformFeedbackVaryings;
   let transformFeedbackMode;
+  let callback;
   if (typeof opt_locations === 'function') {
     opt_errorCallback = opt_locations;
     opt_locations = undefined;
@@ -7328,7 +7397,7 @@ function getProgramOptions(opt_attribs, opt_locations, opt_errorCallback) {
   } else if (opt_attribs && !Array.isArray(opt_attribs)) {
     // If we have an errorCallback we can just return this object
     // Otherwise we need to construct one with default errorCallback
-    if (opt_attribs.errorCallback) {
+    if (opt_attribs.errorCallback && opt_attribs.errors) {
       return opt_attribs;
     }
     const opt = opt_attribs;
@@ -7336,18 +7405,26 @@ function getProgramOptions(opt_attribs, opt_locations, opt_errorCallback) {
     opt_attribs = opt.attribLocations;
     transformFeedbackVaryings = opt.transformFeedbackVaryings;
     transformFeedbackMode = opt.transformFeedbackMode;
+    callback = opt.callback;
   }
 
+  const errorCallback = opt_errorCallback || error$1;
+  const errors = [];
   const options = {
-    errorCallback: opt_errorCallback || error$1,
-    transformFeedbackVaryings: transformFeedbackVaryings,
-    transformFeedbackMode: transformFeedbackMode,
+    errorCallback(msg, ...args) {
+      errors.push(msg);
+      errorCallback(msg, ...args);
+    },
+    transformFeedbackVaryings,
+    transformFeedbackMode,
+    callback,
+    errors,
   };
 
   if (opt_attribs) {
     let attribLocations = {};
     if (Array.isArray(opt_attribs)) {
-      opt_attribs.forEach(function(attrib,  ndx) {
+      opt_attribs.forEach(function (attrib, ndx) {
         attribLocations[attrib] = opt_locations ? opt_locations[ndx] : ndx;
       });
     } else {
@@ -7374,14 +7451,16 @@ function getShaderTypeFromScriptType(gl, scriptType) {
 }
 
 function deleteShaders(gl, shaders) {
-  shaders.forEach(function(shader) {
+  shaders.forEach(function (shader) {
     gl.deleteShader(shader);
   });
 }
 
+const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
+
 /**
  * Creates a program, attaches (and/or compiles) shaders, binds attrib locations, links the
- * program and calls useProgram.
+ * program.
  *
  * NOTE: There are 4 signatures for this function
  *
@@ -7396,11 +7475,13 @@ function deleteShaders(gl, shaders) {
  * @param {number[]} [opt_locations|module:twgl.ErrorCallback] The locations for the. A parallel array to opt_attribs letting you assign locations or an error callback.
  * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors. By default it just prints an error to the console
  *        on error. If you want something else pass an callback. It's passed an error message.
- * @return {WebGLProgram?} the created program or null if error.
+ * @return {WebGLProgram?} the created program or null if error of a callback was provided.
  * @memberOf module:twgl/programs
  */
 function createProgram(
-    gl, shaders, opt_attribs, opt_locations, opt_errorCallback) {
+  gl, shaders, opt_attribs, opt_locations, opt_errorCallback) {
+  // This code is really convoluted, because it may or may not be async
+  // Maybe it would be better to have a separate function
   const progOptions = getProgramOptions(opt_attribs, opt_locations, opt_errorCallback);
   const realShaders = [];
   const newShaders = [];
@@ -7413,7 +7494,7 @@ function createProgram(
       if (elem && elem.type) {
         type = getShaderTypeFromScriptType(gl, elem.type) || type;
       }
-      shader = loadShader(gl, src, type, progOptions.errorCallback);
+      shader = loadShader(gl, src, type, progOptions);
       newShaders.push(shader);
     }
     if (isShader(gl, shader)) {
@@ -7422,17 +7503,16 @@ function createProgram(
   }
 
   if (realShaders.length !== shaders.length) {
-    progOptions.errorCallback("not enough shaders for program");
     deleteShaders(gl, newShaders);
-    return null;
+    return reportError(progOptions, "not enough shaders for program");
   }
 
   const program = gl.createProgram();
-  realShaders.forEach(function(shader) {
+  realShaders.forEach(function (shader) {
     gl.attachShader(program, shader);
   });
   if (progOptions.attribLocations) {
-    Object.keys(progOptions.attribLocations).forEach(function(attrib) {
+    Object.keys(progOptions.attribLocations).forEach(function (attrib) {
       gl.bindAttribLocation(program, progOptions.attribLocations[attrib], attrib);
     });
   }
@@ -7446,26 +7526,135 @@ function createProgram(
     }
     gl.transformFeedbackVaryings(program, varyings, progOptions.transformFeedbackMode || SEPARATE_ATTRIBS);
   }
-  gl.linkProgram(program);
 
+  gl.linkProgram(program);
+  if (progOptions.callback) {
+    checkForProgramLinkCompletionAsync(gl, program, progOptions);
+    return null;
+  } else {
+    if (!checkProgramStatus(gl, program, progOptions.errorCallback)) {
+      gl.deleteProgram(program);
+      deleteShaders(gl, newShaders);
+      return null;
+    }
+    return program;
+  }
+}
+
+/**
+ * Same as createProgram but returns a promise
+ *
+ * NOTE: There are 4 signatures for this function
+ *
+ *     twgl.createProgramAsync(gl, [vs, fs], options);
+ *     twgl.createProgramAsync(gl, [vs, fs], opt_errFunc);
+ *     twgl.createProgramAsync(gl, [vs, fs], opt_attribs, opt_errFunc);
+ *     twgl.createProgramAsync(gl, [vs, fs], opt_attribs, opt_locations, opt_errFunc);
+ *
+ * @param {WebGLRenderingContext} gl The WebGLRenderingContext to use.
+ * @param {WebGLShader[]|string[]} shaders The shaders to attach, or element ids for their source, or strings that contain their source
+ * @param {module:twgl.ProgramOptions|string[]|module:twgl.ErrorCallback} [opt_attribs] Options for the program or an array of attribs names or an error callback. Locations will be assigned by index if not passed in
+ * @param {number[]} [opt_locations|module:twgl.ErrorCallback] The locations for the. A parallel array to opt_attribs letting you assign locations or an error callback.
+ * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors. By default it just prints an error to the console
+ *        on error. If you want something else pass an callback. It's passed an error message.
+ * @return {Promise<WebGLProgram>} The created program
+ * @memberOf module:twgl/programs
+ */
+function createProgramAsync(gl, shaders, ...args) {
+  return new Promise((resolve, reject) => {
+    const programOptions = getProgramOptions(...args);
+    programOptions.callback = (err, program) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(program);
+      }
+    };
+    createProgram(gl, shaders, programOptions);
+  });
+}
+
+/**
+ * Same as createProgramInfo but returns a promise
+ * @param {WebGLRenderingContext} gl The WebGLRenderingContext
+ *        to use.
+ * @param {string[]} shaderSources Array of sources for the
+ *        shaders or ids. The first is assumed to be the vertex shader,
+ *        the second the fragment shader.
+ * @param {module:twgl.ProgramOptions|string[]|module:twgl.ErrorCallback} [opt_attribs] Options for the program or an array of attribs names or an error callback. Locations will be assigned by index if not passed in
+ * @param {number[]} [opt_locations|module:twgl.ErrorCallback] The locations for the. A parallel array to opt_attribs letting you assign locations or an error callback.
+ * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors. By default it just prints an error to the console
+ *        on error. If you want something else pass an callback. It's passed an error message.
+ * @return {Promise<module:twgl.ProgramInfo>} The created ProgramInfo
+ * @memberOf module:twgl/programs
+ */
+function createProgramInfoAsync(gl, shaders, ...args) {
+  return new Promise((resolve, reject) => {
+    const programOptions = getProgramOptions(...args);
+    programOptions.callback = (err, programInfo) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(programInfo);
+      }
+    };
+    createProgramInfo(gl, shaders, programOptions);
+  });
+}
+
+
+/**
+ * Asynchronously wait for program to link.
+ * Note: if 'KHR_parallel_shader_compile' extension does not
+ * exist then compilation will not be truly async.
+ * @param {WebGLRenderingContext} gl The context
+ * @param {WebGLProgram} program The program
+ * @param {module:twgl.ProgramOptions} progOptions Options for the program or an array of attribs names or an error callback. Locations will be assigned by index if not passed in
+ * @private
+ */
+async function checkForProgramLinkCompletionAsync(gl, program, progOptions) {
+  const ext = gl.getExtension('KHR_parallel_shader_compile');
+  const checkFn = ext
+    ? (gl, program) => gl.getProgramParameter(program, ext.COMPLETION_STATUS_KHR)
+    : () => true;
+
+  let waitTime = 0;
+  do {
+    await wait(waitTime);  // must wait at least once
+    waitTime = 1000 / 60;
+  } while (!checkFn(gl, program));
+
+  const success = checkProgramStatus(gl, program, progOptions.errorCallback);
+  const err = success ? undefined : progOptions.errors.join('\n');
+  if (!success) {
+    const errFn = progOptions.errorCallback || error$1;
+    errFn(err);
+    gl.deleteProgram(program);
+    // TODO: delete shaders, but only shaders that were created newly for this
+    // program
+    program = null;
+  }
+  progOptions.callback(err, program);
+}
+
+/**
+ * Check a program's link status
+ * @param {WebGLRenderingContext} gl The WebGLRenderingContext to use.
+ * @param {WebGLProgram} program Program to check
+ * @param {ErrorCallback} [errFn] func for errors
+ * @return {bool} true if program is ok
+ * @private
+ */
+function checkProgramStatus(gl, program, errFn) {
+  errFn = errFn || error$1;
   // Check the link status
   const linked = gl.getProgramParameter(program, LINK_STATUS);
   if (!linked) {
     // something went wrong with the link
     const lastError = gl.getProgramInfoLog(program);
-    progOptions.errorCallback(`${
-      realShaders.map(shader => {
-        const src = addLineNumbersWithError(gl.getShaderSource(shader), '', 0);
-        const type = gl.getShaderParameter(shader, gl.SHADER_TYPE);
-        return `${glEnumToString(gl, type)}\n${src}}`;
-      }).join('\n')
-    }\nError in program linking: ${lastError}`);
-
-    gl.deleteProgram(program);
-    deleteShaders(gl, newShaders);
-    return null;
+    errFn(`Error in program linking: ${lastError}`);
   }
-  return program;
+  return linked;
 }
 
 /**
@@ -7474,25 +7663,25 @@ function createProgram(
  * @param {string} scriptId The id of the script tag.
  * @param {number} [opt_shaderType] The type of shader. If not passed in it will
  *     be derived from the type of the script tag.
- * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors.
+ * @param {module:twgl.ProgramOptions} [progOptions] callback for errors.
  * @return {WebGLShader?} The created shader or null if error.
  * @private
  */
 function createShaderFromScript(
-    gl, scriptId, opt_shaderType, opt_errorCallback) {
+  gl, scriptId, opt_shaderType, progOptions) {
   let shaderSource = "";
   const shaderScript = getElementById(scriptId);
   if (!shaderScript) {
-    throw new Error(`unknown script element: ${scriptId}`);
+    return reportError(progOptions, `unknown script element: ${scriptId}`);
   }
   shaderSource = shaderScript.text;
 
   const shaderType = opt_shaderType || getShaderTypeFromScriptType(gl, shaderScript.type);
   if (!shaderType) {
-    throw new Error('unknown shader type');
+    return reportError(progOptions, 'unknown shader type');
   }
 
-  return loadShader(gl, shaderSource, shaderType, opt_errorCallback);
+  return loadShader(gl, shaderSource, shaderType, progOptions);
 }
 
 /**
@@ -7514,16 +7703,16 @@ function createShaderFromScript(
  * @param {number[]} [opt_locations|module:twgl.ErrorCallback] The locations for the. A parallel array to opt_attribs letting you assign locations or an error callback.
  * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors. By default it just prints an error to the console
  *        on error. If you want something else pass an callback. It's passed an error message.
- * @return {WebGLProgram?} the created program or null if error.
+ * @return {WebGLProgram?} the created program or null if error or a callback was provided.
  * @memberOf module:twgl/programs
  */
 function createProgramFromScripts(
-    gl, shaderScriptIds, opt_attribs, opt_locations, opt_errorCallback) {
+  gl, shaderScriptIds, opt_attribs, opt_locations, opt_errorCallback) {
   const progOptions = getProgramOptions(opt_attribs, opt_locations, opt_errorCallback);
   const shaders = [];
   for (let ii = 0; ii < shaderScriptIds.length; ++ii) {
     const shader = createShaderFromScript(
-        gl, shaderScriptIds[ii], gl[defaultShaderType[ii]], progOptions.errorCallback);
+      gl, shaderScriptIds[ii], gl[defaultShaderType[ii]], progOptions);
     if (!shader) {
       return null;
     }
@@ -7551,17 +7740,16 @@ function createProgramFromScripts(
  * @param {number[]} [opt_locations|module:twgl.ErrorCallback] The locations for the. A parallel array to opt_attribs letting you assign locations or an error callback.
  * @param {module:twgl.ErrorCallback} [opt_errorCallback] callback for errors. By default it just prints an error to the console
  *        on error. If you want something else pass an callback. It's passed an error message.
- * @return {WebGLProgram?} the created program or null if error.
+ * @return {WebGLProgram?} the created program or null if error or a callback was provided.
  * @memberOf module:twgl/programs
  */
 function createProgramFromSources(
-    gl, shaderSources, opt_attribs, opt_locations, opt_errorCallback) {
+  gl, shaderSources, opt_attribs, opt_locations, opt_errorCallback) {
   const progOptions = getProgramOptions(opt_attribs, opt_locations, opt_errorCallback);
   const shaders = [];
   for (let ii = 0; ii < shaderSources.length; ++ii) {
-    const shader = loadShader(
-        gl, shaderSources[ii], gl[defaultShaderType[ii]], progOptions.errorCallback);
-    if (!shader) {
+    const shader = loadShader(gl, shaderSources[ii], gl[defaultShaderType[ii]], progOptions);
+    if (!progOptions.callback && !shader) {
       return null;
     }
     shaders.push(shader);
@@ -7598,13 +7786,13 @@ function addSetterToUniformTree(fullPath, setter, node, uniformSetters) {
   let tokenNdx = 0;
   let path = '';
 
-  for (;;) {
+  for (; ;) {
     const token = tokens[tokenNdx++];  // has to be name or number
     path += token;
     const isArrayIndex = isDigit(token[0]);
     const accessor = isArrayIndex
-        ? parseInt(token)
-        : token;
+      ? parseInt(token)
+      : token;
     if (isArrayIndex) {
       path += tokens[tokenNdx++];  // skip ']'
     }
@@ -7618,8 +7806,8 @@ function addSetterToUniformTree(fullPath, setter, node, uniformSetters) {
       const child = node[accessor] || (isArray ? [] : {});
       node[accessor] = child;
       node = child;
-      uniformSetters[path] = uniformSetters[path] || function(node) {
-        return function(value) {
+      uniformSetters[path] = uniformSetters[path] || function (node) {
+        return function (value) {
           setUniformTree(node, value);
         };
       }(child);
@@ -7835,14 +8023,14 @@ function createUniformBlockSpecFromProgram(gl, program) {
   }
 
   [
-    [ "UNIFORM_TYPE", "type" ],
-    [ "UNIFORM_SIZE", "size" ],  // num elements
-    [ "UNIFORM_BLOCK_INDEX", "blockNdx" ],
-    [ "UNIFORM_OFFSET", "offset", ],
-  ].forEach(function(pair) {
+    ["UNIFORM_TYPE", "type"],
+    ["UNIFORM_SIZE", "size"],  // num elements
+    ["UNIFORM_BLOCK_INDEX", "blockNdx"],
+    ["UNIFORM_OFFSET", "offset",],
+  ].forEach(function (pair) {
     const pname = pair[0];
     const key = pair[1];
-    gl.getActiveUniforms(program, uniformIndices, gl[pname]).forEach(function(value, ndx) {
+    gl.getActiveUniforms(program, uniformIndices, gl[pname]).forEach(function (value, ndx) {
       uniformData[ndx][key] = value;
     });
   });
@@ -7878,7 +8066,7 @@ function createUniformBlockUniformSetter(view, isArray, rows, cols) {
     cols = cols || 1;
     const numElements = view.length;
     const totalRows = numElements / 4;
-    return function(value) {
+    return function (value) {
       let dst = 0;
       let src = 0;
       for (let row = 0; row < totalRows; ++row) {
@@ -7889,7 +8077,7 @@ function createUniformBlockUniformSetter(view, isArray, rows, cols) {
       }
     };
   } else {
-    return function(value) {
+    return function (value) {
       if (value.length) {
         view.set(value);
       } else {
@@ -7967,7 +8155,7 @@ function createUniformBlockInfoFromProgram(gl, program, uniformBlockSpec, blockN
   const uniforms = {};
   const setters = {};
   const setterTree = {};
-  blockSpec.uniformIndices.forEach(function(uniformNdx) {
+  blockSpec.uniformIndices.forEach(function (uniformNdx) {
     const data = uniformData[uniformNdx];
     let name = data.name;
     if (name.startsWith(prefix)) {
@@ -7980,8 +8168,8 @@ function createUniformBlockInfoFromProgram(gl, program, uniformBlockSpec, blockN
     const typeInfo = typeMap[data.type];
     const Type = typeInfo.Type;
     const byteLength = isArray
-        ? pad(typeInfo.size, 16) * data.size
-        : typeInfo.size * data.size;
+      ? pad(typeInfo.size, 16) * data.size
+      : typeInfo.size * data.size;
     const uniformView = new Type(array, data.offset, byteLength / Type.BYTES_PER_ELEMENT);
     uniforms[name] = uniformView;
     // Note: I'm not sure what to do here. The original
@@ -8472,6 +8660,7 @@ function createAttributeSetters(gl, program) {
  * @param {Object.<string, module:twgl.AttribInfo>} buffers AttribInfos mapped by attribute name.
  * @memberOf module:twgl/programs
  * @deprecated use {@link module:twgl.setBuffersAndAttributes}
+ * @private
  */
 function setAttributes(setters, buffers) {
   for (const name in buffers) {
@@ -8574,6 +8763,8 @@ function createProgramInfoFromProgram(gl, program) {
   return programInfo;
 }
 
+const notIdRE = /\s|{|}|;/;
+
 /**
  * Creates a ProgramInfo from 2 sources.
  *
@@ -8605,24 +8796,35 @@ function createProgramInfoFromProgram(gl, program) {
  * @memberOf module:twgl/programs
  */
 function createProgramInfo(
-    gl, shaderSources, opt_attribs, opt_locations, opt_errorCallback) {
+  gl, shaderSources, opt_attribs, opt_locations, opt_errorCallback) {
   const progOptions = getProgramOptions(opt_attribs, opt_locations, opt_errorCallback);
-  let good = true;
-  shaderSources = shaderSources.map(function(source) {
+  const errors = [];
+  shaderSources = shaderSources.map(function (source) {
     // Lets assume if there is no \n it's an id
-    if (source.indexOf("\n") < 0) {
+    if (!notIdRE.test(source)) {
       const script = getElementById(source);
       if (!script) {
-        progOptions.errorCallback("no element with id: " + source);
-        good = false;
+        const err = `no element with id: ${source}`;
+        progOptions.errorCallback(err);
+        errors.push(err);
       } else {
         source = script.text;
       }
     }
     return source;
   });
-  if (!good) {
-    return null;
+  if (errors.length) {
+    return reportError(progOptions, '');
+  }
+  const origCallback = progOptions.callback;
+  if (origCallback) {
+    progOptions.callback = (err, program) => {
+      let programInfo;
+      if (!err) {
+        programInfo = createProgramInfoFromProgram(gl, program);
+      }
+      origCallback(err, programInfo);
+    };
   }
   const program = createProgramFromSources(gl, shaderSources, progOptions);
   if (!program) {
@@ -8635,9 +8837,11 @@ var programs = /*#__PURE__*/Object.freeze({
   __proto__: null,
   createAttributeSetters: createAttributeSetters,
   createProgram: createProgram,
+  createProgramAsync: createProgramAsync,
   createProgramFromScripts: createProgramFromScripts,
   createProgramFromSources: createProgramFromSources,
   createProgramInfo: createProgramInfo,
+  createProgramInfoAsync: createProgramInfoAsync,
   createProgramInfoFromProgram: createProgramInfoFromProgram,
   createUniformSetters: createUniformSetters,
   createUniformBlockSpecFromProgram: createUniformBlockSpecFromProgram,
@@ -8677,8 +8881,8 @@ var programs = /*#__PURE__*/Object.freeze({
  * DEALINGS IN THE SOFTWARE.
  */
 
-const TRIANGLES                      = 0x0004;
-const UNSIGNED_SHORT$3                 = 0x1403;
+const TRIANGLES = 0x0004;
+const UNSIGNED_SHORT$3 = 0x1403;
 
 /**
  * Drawing related functions
@@ -8774,7 +8978,7 @@ function drawObjectList(gl, objectsToDraw) {
   let lastUsedProgramInfo = null;
   let lastUsedBufferInfo = null;
 
-  objectsToDraw.forEach(function(object) {
+  objectsToDraw.forEach(function (object) {
     if (object.active === false) {
       return;
     }
@@ -8844,38 +9048,38 @@ var draw = /*#__PURE__*/Object.freeze({
  * DEALINGS IN THE SOFTWARE.
  */
 
-const FRAMEBUFFER                    = 0x8d40;
-const RENDERBUFFER                   = 0x8d41;
-const TEXTURE_2D$2                     = 0x0de1;
+const FRAMEBUFFER = 0x8d40;
+const RENDERBUFFER = 0x8d41;
+const TEXTURE_2D$2 = 0x0de1;
 
-const UNSIGNED_BYTE$3                  = 0x1401;
+const UNSIGNED_BYTE$3 = 0x1401;
 
 /* PixelFormat */
-const DEPTH_COMPONENT$1                = 0x1902;
-const RGBA$1                           = 0x1908;
-const DEPTH_COMPONENT24$1              = 0x81a6;
-const DEPTH_COMPONENT32F$1             = 0x8cac;
-const DEPTH24_STENCIL8$1               = 0x88f0;
-const DEPTH32F_STENCIL8$1              = 0x8cad;
+const DEPTH_COMPONENT$1 = 0x1902;
+const RGBA$1 = 0x1908;
+const DEPTH_COMPONENT24$1 = 0x81a6;
+const DEPTH_COMPONENT32F$1 = 0x8cac;
+const DEPTH24_STENCIL8$1 = 0x88f0;
+const DEPTH32F_STENCIL8$1 = 0x8cad;
 
 /* Framebuffer Object. */
-const RGBA4$1                          = 0x8056;
-const RGB5_A1$1                        = 0x8057;
-const RGB565$1                         = 0x8D62;
-const DEPTH_COMPONENT16$1              = 0x81A5;
-const STENCIL_INDEX                  = 0x1901;
-const STENCIL_INDEX8                 = 0x8D48;
-const DEPTH_STENCIL$1                  = 0x84F9;
-const COLOR_ATTACHMENT0              = 0x8CE0;
-const DEPTH_ATTACHMENT               = 0x8D00;
-const STENCIL_ATTACHMENT             = 0x8D20;
-const DEPTH_STENCIL_ATTACHMENT       = 0x821A;
+const RGBA4$1 = 0x8056;
+const RGB5_A1$1 = 0x8057;
+const RGB565$1 = 0x8D62;
+const DEPTH_COMPONENT16$1 = 0x81A5;
+const STENCIL_INDEX = 0x1901;
+const STENCIL_INDEX8 = 0x8D48;
+const DEPTH_STENCIL$1 = 0x84F9;
+const COLOR_ATTACHMENT0 = 0x8CE0;
+const DEPTH_ATTACHMENT = 0x8D00;
+const STENCIL_ATTACHMENT = 0x8D20;
+const DEPTH_STENCIL_ATTACHMENT = 0x821A;
 
 /* TextureWrapMode */
-const CLAMP_TO_EDGE$1                  = 0x812F;
+const CLAMP_TO_EDGE$1 = 0x812F;
 
 /* TextureMagFilter */
-const LINEAR$1                         = 0x2601;
+const LINEAR$1 = 0x2601;
 
 /**
  * The options for a framebuffer attachment.
@@ -8898,6 +9102,7 @@ const LINEAR$1                         = 0x2601;
  * @property {number} [type] The type. Used for texture. Default = `gl.UNSIGNED_BYTE`.
  * @property {number} [target] The texture target for `gl.framebufferTexture2D`.
  *   Defaults to `gl.TEXTURE_2D`. Set to appropriate face for cube maps.
+ * @property {number} [samples] The number of samples. Default = 1
  * @property {number} [level] level for `gl.framebufferTexture2D`. Defaults to 0.
  * @property {number} [layer] layer for `gl.framebufferTextureLayer`. Defaults to undefined.
  *   If set then `gl.framebufferTextureLayer` is called, if not then `gl.framebufferTexture2D`
@@ -8941,6 +9146,12 @@ function isRenderbufferFormat(format) {
   return renderbufferFormats[format];
 }
 
+const MAX_COLOR_ATTACHMENT_POINTS = 32;  // even an 3090 only supports 8 but WebGL/OpenGL ES define constants for 32
+
+function isColorAttachmentPoint(attachmentPoint) {
+  return attachmentPoint >= COLOR_ATTACHMENT0 && attachmentPoint < COLOR_ATTACHMENT0 + MAX_COLOR_ATTACHMENT_POINTS;
+}
+
 /**
  * @typedef {Object} FramebufferInfo
  * @property {WebGLFramebuffer} framebuffer The WebGLFramebuffer for this framebufferInfo
@@ -8954,6 +9165,9 @@ function isRenderbufferFormat(format) {
  * Creates a framebuffer and attachments.
  *
  * This returns a {@link module:twgl.FramebufferInfo} because it needs to return the attachments as well as the framebuffer.
+ * It also leaves the framebuffer it just created as the currently bound `FRAMEBUFFER`.
+ * Note: If this is WebGL2 or if you called {@link module:twgl.addExtensionsToContext} then it will set the drawBuffers
+ * to `[COLOR_ATTACHMENT0, COLOR_ATTACHMENT1, ...]` for how ever many color attachments were created.
  *
  * The simplest usage
  *
@@ -8990,28 +9204,37 @@ function createFramebufferInfo(gl, attachments, width, height) {
   const target = FRAMEBUFFER;
   const fb = gl.createFramebuffer();
   gl.bindFramebuffer(target, fb);
-  width  = width  || gl.drawingBufferWidth;
+  width = width || gl.drawingBufferWidth;
   height = height || gl.drawingBufferHeight;
   attachments = attachments || defaultAttachments;
-  let colorAttachmentCount = 0;
+  const usedColorAttachmentsPoints = [];
   const framebufferInfo = {
     framebuffer: fb,
     attachments: [],
     width: width,
     height: height,
   };
-  attachments.forEach(function(attachmentOptions) {
+
+  attachments.forEach(function (attachmentOptions, i) {
     let attachment = attachmentOptions.attachment;
+    const samples = attachmentOptions.samples;
     const format = attachmentOptions.format;
     let attachmentPoint = attachmentOptions.attachmentPoint || getAttachmentPointForFormat(format, attachmentOptions.internalFormat);
     if (!attachmentPoint) {
-      attachmentPoint = COLOR_ATTACHMENT0 + colorAttachmentCount++;
+      attachmentPoint = COLOR_ATTACHMENT0 + i;
+    }
+    if (isColorAttachmentPoint(attachmentPoint)) {
+      usedColorAttachmentsPoints.push(attachmentPoint);
     }
     if (!attachment) {
-      if (isRenderbufferFormat(format)) {
+      if (samples !== undefined || isRenderbufferFormat(format)) {
         attachment = gl.createRenderbuffer();
         gl.bindRenderbuffer(RENDERBUFFER, attachment);
-        gl.renderbufferStorage(RENDERBUFFER, format, width, height);
+        if (samples > 1) {
+          gl.renderbufferStorageMultisample(RENDERBUFFER, samples, format, width, height);
+        } else {
+          gl.renderbufferStorage(RENDERBUFFER, format, width, height);
+        }
       } else {
         const textureOptions = Object.assign({}, attachmentOptions);
         textureOptions.width = width;
@@ -9038,17 +9261,20 @@ function createFramebufferInfo(gl, attachments, width, height) {
           attachmentOptions.layer);
       } else {
         gl.framebufferTexture2D(
-            target,
-            attachmentPoint,
-            attachmentOptions.target || TEXTURE_2D$2,
-            attachment,
-            attachmentOptions.level || 0);
+          target,
+          attachmentPoint,
+          attachmentOptions.target || TEXTURE_2D$2,
+          attachment,
+          attachmentOptions.level || 0);
       }
     } else {
       throw new Error('unknown attachment type');
     }
     framebufferInfo.attachments.push(attachment);
   });
+  if (gl.drawBuffers) {
+    gl.drawBuffers(usedColorAttachmentsPoints);
+  }
   return framebufferInfo;
 }
 
@@ -9096,17 +9322,22 @@ function createFramebufferInfo(gl, attachments, width, height) {
  * @memberOf module:twgl/framebuffers
  */
 function resizeFramebufferInfo(gl, framebufferInfo, attachments, width, height) {
-  width  = width  || gl.drawingBufferWidth;
+  width = width || gl.drawingBufferWidth;
   height = height || gl.drawingBufferHeight;
   framebufferInfo.width = width;
   framebufferInfo.height = height;
   attachments = attachments || defaultAttachments;
-  attachments.forEach(function(attachmentOptions, ndx) {
+  attachments.forEach(function (attachmentOptions, ndx) {
     const attachment = framebufferInfo.attachments[ndx];
     const format = attachmentOptions.format;
-    if (isRenderbuffer(gl, attachment)) {
+    const samples = attachmentOptions.samples;
+    if (samples !== undefined || isRenderbuffer(gl, attachment)) {
       gl.bindRenderbuffer(RENDERBUFFER, attachment);
-      gl.renderbufferStorage(RENDERBUFFER, format, width, height);
+      if (samples > 1) {
+        gl.renderbufferStorageMultisample(RENDERBUFFER, samples, format, width, height);
+      } else {
+        gl.renderbufferStorage(RENDERBUFFER, format, width, height);
+      }
     } else if (isTexture(gl, attachment)) {
       resizeTexture(gl, attachment, attachmentOptions, width, height);
     } else {
@@ -9190,7 +9421,7 @@ var framebuffers = /*#__PURE__*/Object.freeze({
  * @module twgl/vertexArrays
  */
 
-const ELEMENT_ARRAY_BUFFER$2           = 0x8893;
+const ELEMENT_ARRAY_BUFFER$2 = 0x8893;
 
 /**
  * @typedef {Object} VertexArrayInfo
@@ -9242,7 +9473,7 @@ function createVertexArrayInfo(gl, programInfos, bufferInfo) {
   if (!programInfos.length) {
     programInfos = [programInfos];
   }
-  programInfos.forEach(function(programInfo) {
+  programInfos.forEach(function (programInfo) {
     setBuffersAndAttributes(gl, programInfo, bufferInfo);
   });
   gl.bindVertexArray(null);
@@ -9260,6 +9491,9 @@ function createVertexArrayInfo(gl, programInfos, bufferInfo) {
  * @param {Object.<string, function>} setters Attribute setters as returned from createAttributeSetters
  * @param {Object.<string, module:twgl.AttribInfo>} attribs AttribInfos mapped by attribute name.
  * @param {WebGLBuffer} [indices] an optional ELEMENT_ARRAY_BUFFER of indices
+ *
+ * @return {WebGLVertexArrayObject|null} The created WebGLVertexArrayObject
+ *
  * @memberOf module:twgl/vertexArrays
  */
 function createVAOAndSetAttributes(gl, setters, attribs, indices) {
@@ -9284,6 +9518,9 @@ function createVAOAndSetAttributes(gl, setters, attribs, indices) {
  * @param {Object.<string, function>| module:twgl.ProgramInfo} programInfo as returned from createProgramInfo or Attribute setters as returned from createAttributeSetters
  * @param {module:twgl.BufferInfo} bufferInfo BufferInfo as returned from createBufferInfoFromArrays etc...
  * @param {WebGLBuffer} [indices] an optional ELEMENT_ARRAY_BUFFER of indices
+ *
+ * @return {WebGLVertexArrayObject|null} The created WebGLVertexArrayObject
+ *
  * @memberOf module:twgl/vertexArrays
  */
 function createVAOFromBufferInfo(gl, programInfo, bufferInfo) {
@@ -9423,8 +9660,8 @@ function addExtensionToContext(gl, extensionName) {
         }
       } else {
         if (isFunc) {
-          gl[name] = function(origFn) {
-            return function() {
+          gl[name] = function (origFn) {
+            return function () {
               return origFn.apply(ext, arguments);
             };
           }(value);
@@ -9567,6 +9804,8 @@ function create3DContext(canvas, opt_attribs) {
  * @param {WebGLContextAttributes} [opt_attribs] optional webgl context creation attributes
  * @return {WebGLRenderingContext} The created context.
  * @memberOf module:twgl
+ * @deprecated
+ * @private
  */
 function getWebGLContext(canvas, opt_attribs) {
   const gl = create3DContext(canvas, opt_attribs);
@@ -9635,7 +9874,7 @@ function getContext(canvas, opt_attribs) {
 function resizeCanvasToDisplaySize(canvas, multiplier) {
   multiplier = multiplier || 1;
   multiplier = Math.max(0, multiplier);
-  const width  = canvas.clientWidth  * multiplier | 0;
+  const width = canvas.clientWidth * multiplier | 0;
   const height = canvas.clientHeight * multiplier | 0;
   if (canvas.width !== width || canvas.height !== height) {
     canvas.width = width;
@@ -9645,4 +9884,4 @@ function resizeCanvasToDisplaySize(canvas, multiplier) {
   return false;
 }
 
-export { addExtensionsToContext, attributes, bindFramebufferInfo, bindTransformFeedbackInfo, bindUniformBlock, canFilter, canGenerateMipmap, createAttribsFromArrays, createAttributeSetters, createBufferFromArray, createBufferFromTypedArray, createBufferInfoFromArrays, createBuffersFromArrays, createFramebufferInfo, createProgram, createProgramFromScripts, createProgramFromSources, createProgramInfo, createProgramInfoFromProgram, createSampler, createSamplers, createTexture, createTextures, createTransformFeedback, createTransformFeedbackInfo, createUniformBlockInfo, createUniformBlockInfoFromProgram, createUniformBlockSpecFromProgram, createUniformSetters, createVAOAndSetAttributes, createVAOFromBufferInfo, createVertexArrayInfo, draw, drawBufferInfo, drawObjectList, framebuffers, getArray as getArray_, getBytesPerElementForInternalFormat, getContext, getFormatAndTypeForInternalFormat, getGLTypeForTypedArray, getGLTypeForTypedArrayType, getNumComponentsForFormat, getNumComponents as getNumComponents_, getTypedArrayTypeForGLType, getWebGLContext, glEnumToString, isArrayBuffer, isWebGL1, isWebGL2, loadTextureFromUrl, m4, primitives, programs, resizeCanvasToDisplaySize, resizeFramebufferInfo, resizeTexture, setAttribInfoBufferFromArray, setDefaults as setAttributeDefaults_, setAttributePrefix, setAttributes, setBlockUniforms, setBuffersAndAttributes, setDefaultTextureColor, setDefaults$2 as setDefaults, setEmptyTexture, setSamplerParameters, setDefaults$1 as setTextureDefaults_, setTextureFilteringForSize, setTextureFromArray, setTextureFromElement, setTextureParameters, setUniformBlock, setUniforms, setUniformsAndBindTextures, textures, typedarrays, utils, v3, vertexArrays };
+export { addExtensionsToContext, attributes, bindFramebufferInfo, bindTransformFeedbackInfo, bindUniformBlock, canFilter, canGenerateMipmap, createAttribsFromArrays, createAttributeSetters, createBufferFromArray, createBufferFromTypedArray, createBufferInfoFromArrays, createBuffersFromArrays, createFramebufferInfo, createProgram, createProgramAsync, createProgramFromScripts, createProgramFromSources, createProgramInfo, createProgramInfoAsync, createProgramInfoFromProgram, createSampler, createSamplers, createTexture, createTextures, createTransformFeedback, createTransformFeedbackInfo, createUniformBlockInfo, createUniformBlockInfoFromProgram, createUniformBlockSpecFromProgram, createUniformSetters, createVAOAndSetAttributes, createVAOFromBufferInfo, createVertexArrayInfo, draw, drawBufferInfo, drawObjectList, framebuffers, getArray as getArray_, getBytesPerElementForInternalFormat, getContext, getFormatAndTypeForInternalFormat, getGLTypeForTypedArray, getGLTypeForTypedArrayType, getNumComponentsForFormat, getNumComponents as getNumComponents_, getTypedArrayTypeForGLType, getWebGLContext, glEnumToString, isArrayBuffer, isWebGL1, isWebGL2, loadTextureFromUrl, m4, primitives, programs, resizeCanvasToDisplaySize, resizeFramebufferInfo, resizeTexture, setAttribInfoBufferFromArray, setDefaults as setAttributeDefaults_, setAttributePrefix, setAttributes, setBlockUniforms, setBuffersAndAttributes, setDefaultTextureColor, setDefaults$2 as setDefaults, setEmptyTexture, setSamplerParameters, setDefaults$1 as setTextureDefaults_, setTextureFilteringForSize, setTextureFromArray, setTextureFromElement, setTextureParameters, setUniformBlock, setUniforms, setUniformsAndBindTextures, textures, typedarrays, utils, v3, vertexArrays };

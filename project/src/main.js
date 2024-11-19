@@ -1,13 +1,13 @@
-import * as twgl from '../lib/twgl-full'
-import Astro from './Objs/astro'
+import * as twgl from '../lib/twgl-full.module.js'; // Note: Ensure the `.module.js` file exists
+import Astro from './Objs/astro.js'; // Ensure correct casing and `.js` extension
 
 
 
-let initwebgl = () => {
+let initWebGL = () => {
     const canvas = document.querySelector("canvas");
     const gl = canvas.getContext("webgl");
     if (!gl) {
-        throw 'webgl not supported';
+        throw new Error('webgl not supported');
     }
 
     gl.enable(gl.DEPTH_TEST);
@@ -23,17 +23,17 @@ let initwebgl = () => {
  * The render loop updates and renders the astro at each frame.
  */
 let main = () => {
-    let gl = initwebgl()
-    let astro = new Astro(gl, 1, 24)
-    let time = 0
+    let gl = initWebGL();
+    let astro = new Astro(gl, 1, 24);
+    let time = 0;
 
     let render = () => {
-        time += 0.01
-        astro.update(time)
-        astro.render(gl, time)
-        requestAnimationFrame(render)
+        time += 0.01;
+        astro.update(time);
+        astro.render(gl, time);
+        requestAnimationFrame(render);
     }
 
-    render()
+    render();
 }
 
